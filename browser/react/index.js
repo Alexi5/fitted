@@ -162,9 +162,6 @@ ReactDOM.render(
 				   component={SingleListContainer}
 				   onEnter={onListEnter}/>
 
-			<Route path="/list/add-photo" 
-				   component={AddPhotoToList}/>
-
 			<Route path="/posts" 
 				   component={PostsContainer} 
 				   onEnter={onPostsEnter}/>

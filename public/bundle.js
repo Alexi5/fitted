@@ -300,8 +300,6 @@
 			_react2.default.createElement(_reactRouter.Route, { path: '/lists/:listId',
 				component: _SingleListContainer2.default,
 				onEnter: onListEnter }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/list/add-photo',
-				component: AddPhotoToList }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/posts',
 				component: _PostsContainer2.default,
 				onEnter: onPostsEnter }),
