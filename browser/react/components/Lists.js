@@ -7,7 +7,7 @@ const Lists = (props) => {
   let empty ='';
   
   if(lists.length === 0){
-    empty = 'There are no lists at this time';
+    empty = 'You have no lists :(';
   }
 
   function separateTags(arr, splitter) {

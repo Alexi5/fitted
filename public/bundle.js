@@ -30996,12 +30996,8 @@
 				var lists = props.allLists;
 				var empty = void 0;
 	
-				if (lists.length === 0) {
-							empty = 'There are no lists at this time';
-				} else if (posts.length === 0) {
-							empty = 'There are no posts at this time';
-				} else if (photos.length === 0) {
-							empty = 'There are no photos at this time';
+				if (lists.length === 0 && posts.length === 0 && photos.length === 0) {
+							empty = 'Log In to View Content';
 				}
 	
 				return _react2.default.createElement(
@@ -31022,7 +31018,7 @@
 																'div',
 																null,
 																' ',
-																posts.length === 0 && _react2.default.createElement(
+																empty && _react2.default.createElement(
 																			'div',
 																			{ className: 'notice' },
 																			empty
@@ -31064,7 +31060,7 @@
 																'div',
 																null,
 																' ',
-																photos.length === 0 && _react2.default.createElement(
+																empty && _react2.default.createElement(
 																			'div',
 																			{ className: 'notice' },
 																			empty
@@ -31094,7 +31090,7 @@
 																'div',
 																null,
 																' ',
-																lists.length === 0 && _react2.default.createElement(
+																empty && _react2.default.createElement(
 																			'div',
 																			{ className: 'notice' },
 																			empty
@@ -32444,7 +32440,7 @@
 	    var empty = '';
 	
 	    if (lists.length === 0) {
-	        empty = 'There are no lists at this time';
+	        empty = 'You have no lists :(';
 	    }
 	
 	    function separateTags(arr, splitter) {
@@ -32556,7 +32552,7 @@
 	    var empty = '';
 	
 	    if (posts.length === 0) {
-	        empty = 'There are no posts at this time';
+	        empty = 'You have no posts :(';
 	    }
 	
 	    return _react2.default.createElement(
@@ -32670,7 +32666,7 @@
 	  var empty = '';
 	
 	  if (photos.length === 0) {
-	    empty = 'There are no photos at this time';
+	    empty = 'You have no photos  :(';
 	  }
 	
 	  return _react2.default.createElement(

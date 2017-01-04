@@ -7,7 +7,7 @@ const Posts = (props) => {
   let empty ='';
   
   if(posts.length === 0){
-    empty = 'There are no posts at this time';
+    empty = 'You have no posts :(';
   }
 
   return (

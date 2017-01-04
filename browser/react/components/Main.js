@@ -8,12 +8,8 @@ const Main = (props) => {
 	let lists = props.allLists;
 	let empty;
 
-	if(lists.length === 0){
-    	empty = 'There are no lists at this time';
- 	}else if (posts.length === 0) {
- 		empty = 'There are no posts at this time';
- 	} else if (photos.length === 0) {
- 		empty = 'There are no photos at this time';
+ 	if (lists.length === 0 && posts.length === 0 && photos.length === 0){
+    	empty = 'Log In to View Content';
  	}
 
   return (
@@ -21,7 +17,7 @@ const Main = (props) => {
 	    <div className="section-preview">
 	    	<div className="preview">
 	    		<h4>Recent Posts</h4>
-	    		<div> {(posts.length === 0) && <div className="notice">{empty}</div> }</div>
+	    		<div> {empty && <div className="notice">{empty}</div> }</div>
 	    		{  
 	                posts && Object.values(posts).map((post, postId) => {
 	                    return (
@@ -41,7 +37,7 @@ const Main = (props) => {
 	    	</div>
 	    	<div className="preview">
 	    		<h4>Recent Photos</h4>
-	    		<div> {(photos.length === 0) && <div className="notice">{empty}</div> }</div>
+	    		<div> {empty && <div className="notice">{empty}</div> }</div>
 	    		{
 			        photos && Object.values(photos).map((photo, photoId) => {
 			          return (
@@ -56,7 +52,7 @@ const Main = (props) => {
 	    	</div>
 	    	<div className="preview">
 	    		<h4>Recent Lists</h4>
-	    		<div> {(lists.length === 0) && <div className="notice">{empty}</div> }</div>
+	    		<div> {empty && <div className="notice">{empty}</div> }</div>
 	    		{  
 	                lists && Object.values(lists).map((list, listId) => {
 	                    return (

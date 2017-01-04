@@ -7,7 +7,7 @@ const Photos = (props) => {
   let empty ='';
   
   if(photos.length === 0){
-    empty = 'There are no photos at this time';
+    empty = 'You have no photos  :(';
   }
 
   return (
