@@ -31938,7 +31938,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _react = __webpack_require__(1);
@@ -31951,54 +31951,51 @@
 	
 	var SinglePost = function SinglePost(props) {
 	
-	  var post = props.singlePost;
+	    var post = props.singlePost;
 	
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'h3',
-	      null,
-	      'Post by ',
-	      post.userName
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'row' },
-	      _react2.default.createElement(
+	    return _react2.default.createElement(
 	        'div',
-	        { className: 'col-lg-2',
-	          key: post.postId },
+	        null,
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'post' },
-	          _react2.default.createElement(
-	            'h2',
+	            'h3',
 	            null,
-	            post.title
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            post.content
-	          )
-	        )
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'form',
-	        { onClick: props.deletePost(post.postId) },
+	            'Post by ',
+	            post.userName
+	        ),
 	        _react2.default.createElement(
-	          'button',
-	          { type: 'delete', className: 'btn btn-primary' },
-	          'Delete Post'
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'col-lg-2',
+	                    key: post.postId },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'post' },
+	                    _react2.default.createElement(
+	                        'h2',
+	                        null,
+	                        post.title
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        post.content
+	                    )
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'button',
+	                { type: 'delete', onClick: (0, _post.deletePost)(post.postId),
+	                    className: 'btn btn-primary' },
+	                'Delete Post'
+	            )
 	        )
-	      )
-	    )
-	  );
+	    );
 	};
 	
 	exports.default = SinglePost;
@@ -33752,9 +33749,6 @@
 	//map dispatch to props
 	function mapDispatchToProps(dispatch) {
 	    return {
-	        deletePost: function deletePost(post) {
-	            dispatch((0, _post.deletePost)(post));
-	        },
 	        getSinglePost: function getSinglePost(post) {
 	            dispatch((0, _post.getSinglePost)(post));
 	        }

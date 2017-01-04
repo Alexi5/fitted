@@ -14,9 +14,6 @@ function mapStateToProps(state){
 //map dispatch to props
 function mapDispatchToProps(dispatch){
     return {
-        deletePost: function(post){
-            dispatch(deletePost(post));
-        },
         getSinglePost: function(post){
             dispatch(getSinglePost(post));
         }

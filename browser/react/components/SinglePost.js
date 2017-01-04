@@ -20,9 +20,8 @@ return (
         }
         </div>
         <div>
-          <form onClick={props.deletePost(post.postId)}>
-            <button type="delete" className="btn btn-primary">Delete Post</button>
-          </form>
+            <button type="delete" onClick={deletePost(post.postId)}
+            className="btn btn-primary">Delete Post</button>
         </div>
     </div>
   )
