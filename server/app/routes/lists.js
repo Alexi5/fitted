@@ -94,6 +94,7 @@ router.post('/', function(req, res, next){
 	.catch(next)
 })
 
+//update list
 router.put('/:listId', function(req, res, next){
 
 	let newImg = req.body.imgUrl;
