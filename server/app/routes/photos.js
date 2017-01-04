@@ -32,17 +32,6 @@ router.get('/:photoId', function(req, res, next){
 	.catch(next)
 })
 
-router.get('/:userId', function(req, res, next){
-	Photo.findAll({
-		where: {
-			ownerId: req.params.userId
-		}
-	})
-	.then( photos => {
-		res.json(photos)
-	})
-	.catch(next)
-})
 
 router.post('/', function(req, res, next){
 	return Photo.create({
@@ -71,5 +60,17 @@ router.post('/', function(req, res, next){
 	})
 	.catch(next)
 })
+
+// router.get('/:userId', function(req, res, next){
+// 	Photo.findAll({
+// 		where: {
+// 			ownerId: req.params.userId
+// 		}
+// 	})
+// 	.then( photos => {
+// 		res.json(photos)
+// 	})
+// 	.catch(next)
+// })
 
 module.exports = router;

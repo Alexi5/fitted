@@ -35,6 +35,32 @@ router.post('/login', (req, res, next) => {
 })
 
 //Log out
+router.post('/login', (req, res, next) => {
+  let user;
+  
+  return User.findOne({
+    where: {
+      email: req.body.email,
+      //password: req.body.password
+    }
+  })
+  .then(foundUser => {
+
+    let user = foundUser;
+    if(!foundUser) {
+      var err = new Error('Unauthorized');
+      err.status = 401;
+      throw err;
+    } 
+    
+    // res.cookie('userId', foundUser.userId)
+    //res.redirect(`/users/:{foundUser.userId}`) //CHANGE BACK
+    
+    delete(req.session.userId) //????
+    res.send('session closed')
+  })
+  .catch(next)
+})
 
 
 module.exports = router;
