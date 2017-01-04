@@ -28,7 +28,6 @@ import NewList from './components/NewList'
 import NewPost from './components/NewPost'
 import NewPhoto from './components/NewPhoto'
 
-import AddPhotoToList from './components/AddPhotoToList'
 
 //import containers
 // import UserContainer from './containers/UserContainer';

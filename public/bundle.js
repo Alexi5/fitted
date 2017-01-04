@@ -122,63 +122,59 @@
 	
 	var _NewPhoto2 = _interopRequireDefault(_NewPhoto);
 	
-	var _AddPhotoToList = __webpack_require__(315);
-	
-	var _AddPhotoToList2 = _interopRequireDefault(_AddPhotoToList);
-	
-	var _MainContainer = __webpack_require__(316);
+	var _MainContainer = __webpack_require__(315);
 	
 	var _MainContainer2 = _interopRequireDefault(_MainContainer);
 	
-	var _UserContainer = __webpack_require__(317);
+	var _UserContainer = __webpack_require__(316);
 	
 	var _UserContainer2 = _interopRequireDefault(_UserContainer);
 	
-	var _LoginFormContainer = __webpack_require__(319);
+	var _LoginFormContainer = __webpack_require__(318);
 	
 	var _LoginFormContainer2 = _interopRequireDefault(_LoginFormContainer);
 	
-	var _SingleListContainer = __webpack_require__(320);
+	var _SingleListContainer = __webpack_require__(319);
 	
 	var _SingleListContainer2 = _interopRequireDefault(_SingleListContainer);
 	
-	var _SinglePostContainer = __webpack_require__(321);
+	var _SinglePostContainer = __webpack_require__(320);
 	
 	var _SinglePostContainer2 = _interopRequireDefault(_SinglePostContainer);
 	
-	var _SinglePhotoContainer = __webpack_require__(322);
+	var _SinglePhotoContainer = __webpack_require__(321);
 	
 	var _SinglePhotoContainer2 = _interopRequireDefault(_SinglePhotoContainer);
 	
-	var _SearchContainer = __webpack_require__(323);
+	var _SearchContainer = __webpack_require__(322);
 	
 	var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
 	
-	var _ListsContainer = __webpack_require__(324);
+	var _ListsContainer = __webpack_require__(323);
 	
 	var _ListsContainer2 = _interopRequireDefault(_ListsContainer);
 	
-	var _PostsContainer = __webpack_require__(325);
+	var _PostsContainer = __webpack_require__(324);
 	
 	var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
 	
-	var _PhotosContainer = __webpack_require__(326);
+	var _PhotosContainer = __webpack_require__(325);
 	
 	var _PhotosContainer2 = _interopRequireDefault(_PhotosContainer);
 	
-	var _NewListContainer = __webpack_require__(327);
+	var _NewListContainer = __webpack_require__(326);
 	
 	var _NewListContainer2 = _interopRequireDefault(_NewListContainer);
 	
-	var _NewPostContainer = __webpack_require__(328);
+	var _NewPostContainer = __webpack_require__(327);
 	
 	var _NewPostContainer2 = _interopRequireDefault(_NewPostContainer);
 	
-	var _NewPhotoContainer = __webpack_require__(329);
+	var _NewPhotoContainer = __webpack_require__(328);
 	
 	var _NewPhotoContainer2 = _interopRequireDefault(_NewPhotoContainer);
 	
-	var _user = __webpack_require__(318);
+	var _user = __webpack_require__(317);
 	
 	var _list = __webpack_require__(300);
 	
@@ -195,11 +191,10 @@
 	//import action creators
 	
 	
-	//multiple (list of) posts
+	//creating new
 	
 	
-	//import components ======
-	//single user page
+	//sigle list and single page
 	var onMainEnter = function onMainEnter() {
 		Promise.all([
 		// axios.get('/api/home'),
@@ -216,10 +211,11 @@
 	// import UserContainer from './containers/UserContainer';
 	
 	
-	//creating new
+	//multiple (list of) posts
 	
 	
-	//sigle list and single page
+	//import components ======
+	//single user page
 	
 	
 	var onListsEnter = function onListsEnter() {
@@ -305,7 +301,7 @@
 				component: _SingleListContainer2.default,
 				onEnter: onListEnter }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/list/add-photo',
-				component: _AddPhotoToList2.default }),
+				component: AddPhotoToList }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/posts',
 				component: _PostsContainer2.default,
 				onEnter: onPostsEnter }),
@@ -33314,91 +33310,6 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Lists = __webpack_require__(308);
-	
-	var _Lists2 = _interopRequireDefault(_Lists);
-	
-	var _Photos = __webpack_require__(310);
-	
-	var _Photos2 = _interopRequireDefault(_Photos);
-	
-	var _SinglePhoto = __webpack_require__(307);
-	
-	var _SinglePhoto2 = _interopRequireDefault(_SinglePhoto);
-	
-	var _photo = __webpack_require__(314);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var AddPhoto = function AddPhoto(props) {
-	
-	  var listPhotos = props.listPhotos;
-	  var handleChange = props.handleChange;
-	  var handleSubmit = props.handleSubmit;
-	
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'row' },
-	    _react2.default.createElement(
-	      'h2',
-	      null,
-	      'Add Photo'
-	    ),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(
-	      'form',
-	      { className: 'form-row', onSubmit: handleSubmit },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'form-group' },
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Upload Photo'
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', {
-	          onChange: handleChange,
-	          type: 'url',
-	          placeholder: 'Add Photo Link here'
-	          // pattern="file:///.+" //type="file" or ="url" 
-	          // required 
-	        })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'form-group' },
-	        _react2.default.createElement(
-	          'button',
-	          { type: 'submit' },
-	          'Save Photo '
-	        )
-	      )
-	    )
-	  );
-	
-	  //select a list
-	  //add photo
-	  //<div> <button type="add" onClick={addPhotoToList(post.postId)}></button>  </div>
-	
-	};
-	
-	exports.default = AddPhoto;
-
-/***/ },
-/* 316 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
@@ -33455,7 +33366,7 @@
 	exports.default = MainContainer;
 
 /***/ },
-/* 317 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33478,7 +33389,7 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _user = __webpack_require__(318);
+	var _user = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33518,7 +33429,7 @@
 	exports.default = UserContainer;
 
 /***/ },
-/* 318 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33634,7 +33545,7 @@
 	};
 
 /***/ },
-/* 319 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33663,7 +33574,7 @@
 	
 	var _LoginForm2 = _interopRequireDefault(_LoginForm);
 	
-	var _user = __webpack_require__(318);
+	var _user = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33764,7 +33675,7 @@
 	exports.default = LoginFormContiner;
 
 /***/ },
-/* 320 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33919,7 +33830,7 @@
 	// export default SingleListContainer;
 
 /***/ },
-/* 321 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33972,7 +33883,7 @@
 	exports.default = SinglePostContainer;
 
 /***/ },
-/* 322 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34048,7 +33959,7 @@
 	// }
 
 /***/ },
-/* 323 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34184,7 +34095,7 @@
 	exports.default = SearchFormContainer;
 
 /***/ },
-/* 324 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34231,7 +34142,7 @@
 	exports.default = ListsContainer;
 
 /***/ },
-/* 325 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34319,7 +34230,7 @@
 	// }
 
 /***/ },
-/* 326 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34390,7 +34301,7 @@
 	// }
 
 /***/ },
-/* 327 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34528,7 +34439,7 @@
 	exports.default = NewListContiner;
 
 /***/ },
-/* 328 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34750,7 +34661,7 @@
 	// export default NewPostContainer;
 
 /***/ },
-/* 329 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
