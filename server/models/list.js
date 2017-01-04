@@ -4,6 +4,7 @@
 const Sequelize = require('sequelize');
 const db = require('./db')
 const Photo = require('./photo');
+const imgProcess = require('lwip');
 
 //schema
 const list = {

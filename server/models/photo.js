@@ -4,6 +4,7 @@
 const Sequelize = require('sequelize');
 const List = require('./list');
 const db = require('./db')
+const imgProcess = require('lwip');
 
 //schema
 const photo = {
@@ -41,19 +42,24 @@ const config = {
 			// this.imgUrl = (`file:///Users/alexjennings/Desktop
 			// 	/fitted/public/photos/${this.photoId}.jpg`)
 			// return this
-		},
-		//resize photo
-	//  beforeCreate: function(){
-	// 		this.update({
-	// 			width: 320,
-	// 			height: 220
-	// 		})
-	// 	}	
+		},	
 	},
 	instanceMethods: {
-
+		resizePhoto: function(){
+			return imgProcess.open(this, function(err, img){
+					img.batch().resize(300, 300)
+					.catch(err)
+			})
+		}
 	},
 	classMethods: {
+		associate: function(User){
+			Photo.belongsTo(User, {
+				foriegnKey: {
+					allowNull: false
+				}
+			})
+		}
 	}
 }
 

@@ -43,7 +43,7 @@ router.get('/:listId', function(req, res, next){
 	.then( foundList => {
 		var newListPhotos = foundList.dataValues.listPhotos;
 		var finalList = [];
-
+		
 		newListPhotos.map( photoInList => {
 			Photo.findOne({
 				where: {
@@ -120,7 +120,6 @@ router.put('/:listId', function(req, res, next){
 
 		list.update(updatedList)
 		.then( returnList => {
-			console.log('returnList: ', returnList)
 			res.json(returnList)
 		})
 	})
