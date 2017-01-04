@@ -2,6 +2,7 @@
 
 const Sequelize = require('sequelize');
 const db = require('./db')
+const models = require('./index')
 const bcrypt = require('bcrypt-nodejs');
 const Post = require('./post')
 const List = require('./list')
@@ -59,6 +60,13 @@ const config = {
 		beforeUpdate: function(user){
 			if(!user.changed('password')) {return}
 			else {return user.hashPassword();}
+		}
+	}, 
+	classMethods: {
+		associations: function(models){
+			User.hasMany(models.Post, {foreignKey: 'ownerId'}),
+			 User.hasMany(models.List, {foreignKey: 'ownerId'}),
+			 User.hasMany(models.Photo, {foreignKey: 'ownerId'})
 		}
 	}
 }

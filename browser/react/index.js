@@ -64,9 +64,7 @@ const onMainEnter = function(){
 		axios.get('/api/photos'),
 		axios.get('/api/lists')
 	])
-	.then( res => {
-		console.log('res: ', res)	
-	})
+	.then( res => res)
 	.then( () => {
 		store.dispatch(getAllPosts());
 		store.dispatch(getAllPhotos());

@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
 //requrie the db and routes
 const db = require('../models/db');
-// const dbIndex= require('../models/index');
+const dbIndex= require('../models/index');
 
 //middleware ==================
 app.use(bodyParser.json());

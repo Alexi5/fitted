@@ -199,7 +199,7 @@
 		Promise.all([
 		// axios.get('/api/home'),
 		_axios2.default.get('/api/posts'), _axios2.default.get('/api/photos'), _axios2.default.get('/api/lists')]).then(function (res) {
-			console.log('res: ', res);
+			return res;
 		}).then(function () {
 			_store2.default.dispatch((0, _post.getAllPosts)());
 			_store2.default.dispatch((0, _photo.getAllPhotos)());
