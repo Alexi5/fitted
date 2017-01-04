@@ -47,9 +47,6 @@ const list = {
 
 const config = {
 	instanceMethods: {
-		findSimilarTags: function() {
-
-		},
 		addPhotoToList: function(photo){
 			return Photo.findOne({
 				where: {
