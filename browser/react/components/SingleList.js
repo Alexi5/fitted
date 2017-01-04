@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router'
+
 const Img = require('react-picture').Image; 
 
 const SingleList = (props) => {
@@ -40,6 +41,11 @@ return (
           }
           </small>
         </div>
+        {/*<div>
+                    <button type="delete" onClick={deleteList(list.listId)}
+                    className="btn btn-primary">Delete List</button>
+          </div>*/
+        }
     </div>
   )
 };

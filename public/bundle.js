@@ -31998,50 +31998,6 @@
 	};
 	
 	exports.default = SinglePost;
-	
-	// import React, {Component} from 'react';
-	// import {deletePost} from '../action-creators/post'
-	
-	// class SinglePost extends Component {
-	
-	//   constructor(props){
-	//     super(props);
-	//   }
-	
-	//   deleteHandler(e){
-	//       e.preventDefault();
-	//       this.props.deletePost(this.props.post.postId);
-	//   }
-	
-	//   render(){
-	//     let post = this.props.singlePost
-	
-	//     return (
-	//         <div>
-	//             <h3>Post</h3>
-	//             <div className='row'> 
-	//             {    
-	//                 <div className='col-lg-2' 
-	//                      key={post.postId}>
-	//                     <div className='post'>
-	//                        <h2>{post.title}</h2>
-	//                        <p>{post.content}</p>
-	//                     </div>
-	//                </div>              
-	//             }
-	//             </div>
-	//             <div>
-	//                 <button 
-	//                   type="delete" 
-	//                   className="btn btn-primary"
-	//                   onClick={this.deleteHandler.bind(this)}>Delete Post</button>
-	//             </div>
-	//         </div>
-	//       )
-	//   }
-	// };
-	
-	// export default SinglePost;
 
 /***/ },
 /* 305 */
@@ -32139,6 +32095,8 @@
 	
 	var _reactRouter = __webpack_require__(178);
 	
+	var _photo = __webpack_require__(313);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Img = __webpack_require__(300).Image;
@@ -32193,6 +32151,11 @@
 	                'posted at ',
 	                photo.createdAt
 	            )
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('button', { type: 'add', onClick: (0, _photo.addPhotoToList)(post.postId) })
 	        )
 	    );
 	};
@@ -33027,7 +32990,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.postNewPhoto = exports.newPhoto = exports.getAllPhotos = exports.allPhotos = exports.getSinglePhoto = exports.singlePhoto = undefined;
+	exports.addPhotoToList = exports.postNewPhoto = exports.newPhoto = exports.getAllPhotos = exports.allPhotos = exports.getSinglePhoto = exports.singlePhoto = undefined;
 	
 	var _constants = __webpack_require__(257);
 	
@@ -33085,6 +33048,21 @@
 				dispatch(newPhoto(allUserPhotos));
 	
 				_reactRouter.hashHistory.push('/photos/' + newPhoto.photoId);
+			});
+		};
+	};
+	
+	var addPhotoToList = exports.addPhotoToList = function addPhotoToList(listId, photoId) {
+		return function (dispatch, getState) {
+			return _axios2.default.post('/api/lists/' + listId + '/photos', { listId: listId, photoId: photoId }).then(function (res) {
+				return res.data;
+			}).then(function (photo) {
+				//get the state
+				var targetList = getState().lists.singleList;
+				var listPhotos = singleList.photos;
+	
+				var addedPhoto = photos.concat(photo);
+				var newList = Object.assign({}, targetList, { listPhotos: addedPhotos });
 			});
 		};
 	};
@@ -33160,7 +33138,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.addPhotoToList = exports.createNewList = exports.newList = exports.getAllLists = exports.allLists = exports.allPhotosInList = exports.getSingleList = exports.singleList = undefined;
+	exports.createNewList = exports.newList = exports.getAllLists = exports.allLists = exports.allPhotosInList = exports.getSingleList = exports.singleList = undefined;
 	
 	var _constants = __webpack_require__(257);
 	
@@ -33226,21 +33204,6 @@
 				dispatch(getAllLists(allExistingLists));
 	
 				_reactRouter.hashHistory.push('/lists/' + newList.listId);
-			});
-		};
-	};
-	
-	var addPhotoToList = exports.addPhotoToList = function addPhotoToList(listId, photoId) {
-		return function (dispatch, getState) {
-			return _axios2.default.post('/api/lists/' + listId + '/photos', id).then(function (res) {
-				return res.data;
-			}).then(function (photo) {
-				//get the state
-				var targetList = getState().lists.singleList;
-				var listPhotos = singleList.photos;
-	
-				var addedPhoto = photos.concat(photo);
-				var newList = Object.assign({}, targetList, { listPhotos: addedPhotos });
 			});
 		};
 	};
@@ -33756,72 +33719,6 @@
 	
 	var SinglePostContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SinglePost2.default);
 	exports.default = SinglePostContainer;
-	
-	// import React, {Component} from 'react';
-	// import SinglePost from '../components/SinglePost';
-	// import store from '../store.js';
-	// import {connect} from 'react-redux'
-	// import {getSinglePost, deletePost} from '../action-creators/post'; //get action creators 
-	
-	// //map dispatch to props
-	// function mapStateToProps(state){
-	//     console.log('state: ', state)
-	//     return {
-	//         singlePost: state.posts.singlePost
-	//     }
-	// }
-	
-	// //map dispatch to props
-	// function mapDispatchToProps(dispatch){
-	//     return {
-	//         deletePost: function(post){
-	//             dispatch(deletePost(post));
-	//         },
-	//         getSinglePost: function(post){
-	//             dispatch(getSinglePost(post));
-	//         }
-	//     }
-	// }
-	
-	// class SinglePostContainer extends Component {
-	
-	//     constructor(props){
-	//         super(props)
-	//         this.state = {
-	//             post: props.singlePost
-	//         }
-	//     }
-	
-	//     deleteSinglePost(postId) {
-	//         deletePost(postId)
-	//         .then((res) => {
-	
-	//             let allPosts = this.state.post.filter((post) => {
-	//                 return postId !== post.postId;
-	//             });
-	
-	//             this.setState(state => {
-	//                 state.allPosts = allPosts;
-	//                 return state;
-	//             });
-	//         })
-	//         .catch((err) => {
-	//             console.error('err', err);
-	//         });
-	//     }
-	
-	//     render(){
-	//         return(
-	//             <SinglePost
-	//                 post={this.state.post}
-	//                 deletePost={this.deleteSinglePost.bind(this)}/>
-	//         )
-	//     }
-	
-	// }
-	
-	// SinglePostContainer = connect(mapStateToProps, mapDispatchToProps)(SinglePostContainer)
-	// export default SinglePostContainer;
 
 /***/ },
 /* 321 */

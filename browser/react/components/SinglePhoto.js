@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import {addPhotoToList} from '../action-creators/photo'
 const Img = require('react-picture').Image; 
 
 const SinglePhoto = (props) => {
@@ -34,6 +35,9 @@ const SinglePhoto = (props) => {
                 </p>
                 <br/>
                 <small>posted at {photo.createdAt}</small>
+            </div>
+            <div>
+                <button type="add" onClick={addPhotoToList(post.postId)}></button>
             </div>
         </div>
     )
