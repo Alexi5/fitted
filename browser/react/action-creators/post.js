@@ -47,18 +47,18 @@ export const getAllPosts = () => {
 	}
 }
 
-export const newPost = (postTitle, postContent) => {
+export const newPost = (title, content) => {
 	return {
 		type: CREATE_POST,
-		postTitle, postContent
+		title, content
 	} 
 };
 
-export const createNewPost = (postTitle, postContent) => {
+export const createNewPost = (title, content) => {
 
 	return (dispatch, getState) => {
 		return axios.post('/api/posts', 
-			{title: postTitle, content: postContent})
+			{title: title, content: content})
 		.then(res => res.data )
 		.then( newPost => {
 			const allExistingPosts = getState().posts.allPosts.concat([newPost]);

@@ -66,3 +66,21 @@ export const createNewList = (listName, listTags) => {
 	}
 }
 
+export const addPhotoToList = (listId, imgUrl) => {
+	return (dispatch, getState) => {
+		return axios.put(`/api/lists/${listId}`, 
+			{listId: listId, imgUrl: imgUrl})
+		.then(res => {
+			res.data})
+		.then(photo => {
+			console.log('photo: ', photo)
+			//get the state
+			const targetList = getState().lists.singleList
+			const listPhotos = singleList.photos
+
+			const addedPhoto = photos.concat(photo)
+			const newList = Object.assign({}, targetList, {listPhotos: addedPhotos})
+		})
+	}
+}
+

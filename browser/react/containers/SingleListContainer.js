@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import store from '../store.js';
 import SingleList from '../components/SingleList';
 import {getSingleList, 
@@ -9,6 +9,7 @@ import {connect} from 'react-redux'
 function mapStateToProps(state){
     return {
         listName: state.lists.name,
+        listId: state.lists.listId,
         listPhotos: state.lists.listPhotos,
         listTags: state.lists.tags
     }

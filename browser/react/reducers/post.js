@@ -8,8 +8,8 @@ export const initialPostState = {
   selectedUser: {},
   singlePost: {},
   allPosts: [],
-  newPostTitle: '',
-  newPostContent: ''
+  postTitle: '',
+  postContent: ''
 
 };
 
@@ -26,8 +26,8 @@ export default function (state = initialPostState, action) {
       return (newState.allPosts = action.posts);
 
     case CREATE_POST:
-      newState.newPostTitle = action.postTitle;
-      newState.newPostContent = action.postContent;
+      newState.postTitle = action.title;
+      newState.postContent = action.content;
       return newState
 
     case DELETE_POST: 

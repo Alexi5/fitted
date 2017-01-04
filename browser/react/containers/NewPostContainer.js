@@ -4,9 +4,12 @@ import store from '../store.js';
 
 import NewPost from '../components/NewPost'
 import {createNewPost} from '../action-creators/post'
+import {browserHistory} from 'react-router'
 
 class NewPostContainer extends Component {
     constructor(props){
+
+        console.log('props: ', props)
         super(props);
         this.state = {
             postTitle: '',
@@ -17,6 +20,10 @@ class NewPostContainer extends Component {
         this.handleChange=this.handleChange.bind(this)
         this.handleSubmit=this.handleSubmit.bind(this)
     }
+
+    // redirect(){
+    //     browserHistory.push('/posts')
+    // }
 
     handleChange(event){
         this.setState({
@@ -36,6 +43,8 @@ class NewPostContainer extends Component {
             postTitle: '', 
             postContent: '', 
             dirty: false})
+
+        // browserHistory.push('/posts')
     }
 
     render(){

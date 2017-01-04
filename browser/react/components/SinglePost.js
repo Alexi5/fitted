@@ -1,5 +1,6 @@
 import React from 'react';
 import {deletePost} from '../action-creators/post'
+import {browserHistory} from 'react-router'
 
 const SinglePost = (props) => {
 
@@ -21,8 +22,10 @@ return (
         }
         </div>
         <div>
-            <button type="delete" onClick={deletePost(post.postId)}
-            className="btn btn-primary">Delete Post</button>
+            <button type="delete" 
+              onClick={deletePost(post.postId)}
+              className="btn btn-primary"
+              >Delete Post</button>
         </div>
     </div>
   )

@@ -28,6 +28,8 @@ import NewList from './components/NewList'
 import NewPost from './components/NewPost'
 import NewPhoto from './components/NewPhoto'
 
+import AddPhotoToList from './components/AddPhotoToList'
+
 //import containers
 // import UserContainer from './containers/UserContainer';
 import MainContainer from './containers/MainContainer'
@@ -161,6 +163,9 @@ ReactDOM.render(
 				   component={SingleListContainer}
 				   onEnter={onListEnter}/>
 
+			<Route path="/list/add-photo" 
+				   component={AddPhotoToList}/>
+
 			<Route path="/posts" 
 				   component={PostsContainer} 
 				   onEnter={onPostsEnter}/>
@@ -181,6 +186,7 @@ ReactDOM.render(
 				   component={NewPostContainer} />
 		    <Route path="/new-photo" 
 				   component={NewPhotoContainer}/>
+
 
 		    <Route path="/users/:userId" 
 			       component={UserContainer}

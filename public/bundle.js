@@ -90,11 +90,11 @@
 	
 	var _SingleList2 = _interopRequireDefault(_SingleList);
 	
-	var _SinglePost = __webpack_require__(304);
+	var _SinglePost = __webpack_require__(300);
 	
 	var _SinglePost2 = _interopRequireDefault(_SinglePost);
 	
-	var _SinglePhoto = __webpack_require__(306);
+	var _SinglePhoto = __webpack_require__(302);
 	
 	var _SinglePhoto2 = _interopRequireDefault(_SinglePhoto);
 	
@@ -122,63 +122,67 @@
 	
 	var _NewPhoto2 = _interopRequireDefault(_NewPhoto);
 	
-	var _MainContainer = __webpack_require__(314);
+	var _AddPhotoToList = __webpack_require__(314);
+	
+	var _AddPhotoToList2 = _interopRequireDefault(_AddPhotoToList);
+	
+	var _MainContainer = __webpack_require__(315);
 	
 	var _MainContainer2 = _interopRequireDefault(_MainContainer);
 	
-	var _UserContainer = __webpack_require__(316);
+	var _UserContainer = __webpack_require__(317);
 	
 	var _UserContainer2 = _interopRequireDefault(_UserContainer);
 	
-	var _LoginFormContainer = __webpack_require__(318);
+	var _LoginFormContainer = __webpack_require__(319);
 	
 	var _LoginFormContainer2 = _interopRequireDefault(_LoginFormContainer);
 	
-	var _SingleListContainer = __webpack_require__(319);
+	var _SingleListContainer = __webpack_require__(320);
 	
 	var _SingleListContainer2 = _interopRequireDefault(_SingleListContainer);
 	
-	var _SinglePostContainer = __webpack_require__(320);
+	var _SinglePostContainer = __webpack_require__(321);
 	
 	var _SinglePostContainer2 = _interopRequireDefault(_SinglePostContainer);
 	
-	var _SinglePhotoContainer = __webpack_require__(321);
+	var _SinglePhotoContainer = __webpack_require__(322);
 	
 	var _SinglePhotoContainer2 = _interopRequireDefault(_SinglePhotoContainer);
 	
-	var _SearchContainer = __webpack_require__(322);
+	var _SearchContainer = __webpack_require__(323);
 	
 	var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
 	
-	var _ListsContainer = __webpack_require__(323);
+	var _ListsContainer = __webpack_require__(324);
 	
 	var _ListsContainer2 = _interopRequireDefault(_ListsContainer);
 	
-	var _PostsContainer = __webpack_require__(324);
+	var _PostsContainer = __webpack_require__(325);
 	
 	var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
 	
-	var _PhotosContainer = __webpack_require__(325);
+	var _PhotosContainer = __webpack_require__(326);
 	
 	var _PhotosContainer2 = _interopRequireDefault(_PhotosContainer);
 	
-	var _NewListContainer = __webpack_require__(326);
+	var _NewListContainer = __webpack_require__(327);
 	
 	var _NewListContainer2 = _interopRequireDefault(_NewListContainer);
 	
-	var _NewPostContainer = __webpack_require__(327);
+	var _NewPostContainer = __webpack_require__(328);
 	
 	var _NewPostContainer2 = _interopRequireDefault(_NewPostContainer);
 	
-	var _NewPhotoContainer = __webpack_require__(328);
+	var _NewPhotoContainer = __webpack_require__(329);
 	
 	var _NewPhotoContainer2 = _interopRequireDefault(_NewPhotoContainer);
 	
-	var _user = __webpack_require__(317);
+	var _user = __webpack_require__(318);
 	
-	var _list = __webpack_require__(315);
+	var _list = __webpack_require__(316);
 	
-	var _post = __webpack_require__(305);
+	var _post = __webpack_require__(301);
 	
 	var _photo = __webpack_require__(313);
 	
@@ -191,10 +195,11 @@
 	//import action creators
 	
 	
-	//creating new
+	//multiple (list of) posts
 	
 	
-	//sigle list and single page
+	//import components ======
+	//single user page
 	var onMainEnter = function onMainEnter() {
 		Promise.all([
 		// axios.get('/api/home'),
@@ -211,11 +216,10 @@
 	// import UserContainer from './containers/UserContainer';
 	
 	
-	//multiple (list of) posts
+	//creating new
 	
 	
-	//import components ======
-	//single user page
+	//sigle list and single page
 	
 	
 	var onListsEnter = function onListsEnter() {
@@ -300,6 +304,8 @@
 			_react2.default.createElement(_reactRouter.Route, { path: '/lists/:listId',
 				component: _SingleListContainer2.default,
 				onEnter: onListEnter }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/list/add-photo',
+				component: _AddPhotoToList2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/posts',
 				component: _PostsContainer2.default,
 				onEnter: onPostsEnter }),
@@ -28660,8 +28666,8 @@
 	      return newState.allPosts = action.posts;
 	
 	    case _constants.CREATE_POST:
-	      newState.newPostTitle = action.postTitle;
-	      newState.newPostContent = action.postContent;
+	      newState.postTitle = action.title;
+	      newState.postContent = action.content;
 	      return newState;
 	
 	    case _constants.DELETE_POST:
@@ -28678,8 +28684,8 @@
 	  selectedUser: {},
 	  singlePost: {},
 	  allPosts: [],
-	  newPostTitle: '',
-	  newPostContent: ''
+	  postTitle: '',
+	  postContent: ''
 	
 	};
 
@@ -31611,6 +31617,382 @@
 	  value: true
 	});
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(178);
+	
+	var _store = __webpack_require__(233);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _list = __webpack_require__(316);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Img = __webpack_require__(303).Image;
+	
+	var SingleList = function (_Component) {
+	  _inherits(SingleList, _Component);
+	
+	  function SingleList(props) {
+	    _classCallCheck(this, SingleList);
+	
+	    var _this = _possibleConstructorReturn(this, (SingleList.__proto__ || Object.getPrototypeOf(SingleList)).call(this));
+	
+	    _this.state = {
+	      input: '',
+	      dirty: false
+	    };
+	
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
+	  }
+	
+	  //put in utilities file
+	
+	
+	  _createClass(SingleList, [{
+	    key: 'separateTags',
+	    value: function separateTags(arr, splitter) {
+	      if (arr.length === 0) {
+	        return [];
+	      }
+	
+	      return arr.slice(0).join(splitter);
+	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState({
+	        input: e.target.value,
+	        dirty: true
+	      });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      _store2.default.dispatch((0, _list.addPhotoToList)(this.props.listId, this.state.input));
+	
+	      this.setState({
+	        input: '',
+	        dirty: true
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var listName = this.props.listName;
+	      var listId = this.props.listId;
+	      var listPhotos = this.props.listPhotos;
+	      var tags = this.props.listTags;
+	      var index = 0;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          listName
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          listPhotos && Object.values(listPhotos).map(function (photo) {
+	            return _react2.default.createElement(
+	              'div',
+	              { className: 'list-group-item', key: index++ },
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(Img, { alt: 'photo', srcSet: photo }),
+	              _react2.default.createElement('br', null)
+	            );
+	          }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'small',
+	            null,
+	            'tags:',
+	            tags && this.separateTags(tags, ', ')
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Add Photo'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'form',
+	            { className: 'form-row', onSubmit: this.handleSubmit.bind(this) },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _react2.default.createElement(
+	                'label',
+	                null,
+	                'Upload Photo'
+	              ),
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('input', {
+	                onChange: this.handleChange.bind(this),
+	                type: 'url',
+	                placeholder: 'Add Photo Link here'
+	                // pattern="file:///.+" //type="file" or ="url" 
+	                // required 
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _react2.default.createElement(
+	                'button',
+	                { type: 'submit' },
+	                ' Save Photo '
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return SingleList;
+	}(_react.Component);
+	
+	exports.default = SingleList;
+	
+	// const SingleList = (props) => {
+	
+	//   // console.log('single list props: ', props)
+	//   let listName = props.listName;
+	//   let listPhotos = props.listPhotos;
+	//   let tags = props.listTags; //an object
+	
+	// return (
+	//     <div>
+	//         <h3>{listName}</h3>
+	//         <div className='row'> 
+	//         {
+	//           listPhotos && Object.values(listPhotos).map((photo) => {
+	//             return (
+	//               <div className="list-group-item" key={index++}>
+	//                   <br/>        
+	//                     <Img alt='photo' srcSet={photo}/>
+	//                   <br/>
+	//               </div> 
+	//             );
+	//           })
+	//         }
+	//         <br/>
+	//           <small>tags:
+	//           {
+	//             tags && separateTags(tags, ', ')
+	//           }
+	//           </small>
+	//         <br/>
+	//           <h2>Add Photo</h2>
+	//           <br/>
+	//           <form className='form-row' onSubmit={handleSubmit}>
+	//               {/*add warninghere*/}
+	//               <div className='form-group'>
+	//                 <label>Upload Photo</label>
+	//                 <br/>
+	//                 <input
+	//                   onChange={handleChange}
+	//                   type="url" 
+	//                   placeholder="Add Photo Link here"
+	//                   // pattern="file:///.+" //type="file" or ="url" 
+	//                   // required 
+	//                   /> 
+	//               </div>
+	//               <div className='form-group'>
+	//                 <button type="submit"> Save Photo </button>
+	//               </div>
+	//            </form>
+	//         </div>
+	//         {/*<div>
+	//                     <button type="delete" onClick={deleteList(list.listId)}
+	//                     className="btn btn-primary">Delete List</button>
+	//           </div>*/
+	//         }
+	//     </div>
+	//   )
+	// };
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _post = __webpack_require__(301);
+	
+	var _reactRouter = __webpack_require__(178);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var SinglePost = function SinglePost(props) {
+	
+	    var post = props.singlePost;
+	
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	            'h3',
+	            null,
+	            'Post'
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'col-lg-2',
+	                    key: post.postId },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'post' },
+	                    _react2.default.createElement(
+	                        'h2',
+	                        null,
+	                        post.title
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        post.content
+	                    )
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'button',
+	                { type: 'delete',
+	                    onClick: (0, _post.deletePost)(post.postId),
+	                    className: 'btn btn-primary'
+	                },
+	                'Delete Post'
+	            )
+	        )
+	    );
+	};
+	
+	exports.default = SinglePost;
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.createNewPost = exports.newPost = exports.getAllPosts = exports.allPosts = exports.deletePost = exports.getSinglePost = exports.singlePost = undefined;
+	
+	var _constants = __webpack_require__(257);
+	
+	var _axios = __webpack_require__(261);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reactRouter = __webpack_require__(178);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var singlePost = exports.singlePost = function singlePost(post) {
+		return {
+			type: _constants.GET_SINGLE_POST,
+			post: post
+		};
+	};
+	
+	var getSinglePost = exports.getSinglePost = function getSinglePost(postId) {
+		return function (dispatch) {
+			_axios2.default.get('/api/posts/' + postId).then(function (res) {
+				dispatch(singlePost(res.data));
+			});
+		};
+	};
+	
+	var deletePost = exports.deletePost = function deletePost(postId) {
+		return function (dispatch) {
+			_axios2.default.delete('/api/posts/' + postId).then(function (res) {
+				console.log('res: ', res);
+			});
+		};
+	};
+	
+	var allPosts = exports.allPosts = function allPosts(posts) {
+		return {
+			type: _constants.GET_ALL_POSTS,
+			posts: posts
+		};
+	};
+	
+	var getAllPosts = exports.getAllPosts = function getAllPosts() {
+		return function (dispatch) {
+			_axios2.default.get('/api/posts').then(function (res) {
+				dispatch(allPosts(res.data));
+			});
+		};
+	};
+	
+	var newPost = exports.newPost = function newPost(title, content) {
+		return {
+			type: _constants.CREATE_POST,
+			title: title, content: content
+		};
+	};
+	
+	var createNewPost = exports.createNewPost = function createNewPost(title, content) {
+	
+		return function (dispatch, getState) {
+			return _axios2.default.post('/api/posts', { title: title, content: content }).then(function (res) {
+				return res.data;
+			}).then(function (newPost) {
+				var allExistingPosts = getState().posts.allPosts.concat([newPost]);
+				dispatch(getAllPosts(allExistingPosts));
+	
+				_reactRouter.hashHistory.push('/posts/' + newPost.postId);
+			});
+		};
+	};
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -31619,69 +32001,81 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Img = __webpack_require__(300).Image;
+	var Img = __webpack_require__(303).Image;
 	
-	var SingleList = function SingleList(props) {
+	var SinglePhoto = function SinglePhoto(props) {
 	
-	  // console.log('single list props: ', props)
-	  var listName = props.listName;
-	  var listPhotos = props.listPhotos;
-	  var tags = props.listTags; //an object
-	  var index = 0;
+	    var photo = props.singlePhoto;
+	    var tags = props.photoTags;
 	
-	  function separateTags(arr, splitter) {
-	    if (arr.length === 0) {
-	      return [];
+	    function separateTags(arr, splitter) {
+	        if (arr.length === 0) {
+	            return [];
+	        }
+	
+	        return arr.slice(0).join(splitter);
 	    }
 	
-	    return arr.slice(0).join(splitter);
-	  }
-	
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'h3',
-	      null,
-	      listName
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'row' },
-	      listPhotos && Object.values(listPhotos).map(function (photo) {
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'list-group-item', key: index++ },
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(Img, { alt: 'photo', srcSet: photo }),
-	          _react2.default.createElement('br', null)
-	        );
-	      }),
-	      _react2.default.createElement('br', null),
-	      _react2.default.createElement(
-	        'small',
+	    return _react2.default.createElement(
+	        'div',
 	        null,
-	        'tags:',
-	        tags && separateTags(tags, ', ')
-	      )
-	    )
-	  );
+	        _react2.default.createElement(
+	            'h3',
+	            null,
+	            'Photo by ',
+	            photo.userName
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'col-lg-2', key: photo.photoId },
+	                _react2.default.createElement(Img, { alt: 'photo', srcSet: photo.imgUrl }),
+	                _react2.default.createElement(
+	                    'small',
+	                    { className: 'caption' },
+	                    photo.caption
+	                ),
+	                _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	                'p',
+	                null,
+	                'tags:',
+	                tags && separateTags(tags, ', ')
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	                'small',
+	                null,
+	                'posted at ',
+	                photo.createdAt
+	            )
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('button', { type: 'add' })
+	        )
+	    );
 	};
 	
-	exports.default = SingleList;
+	exports.default = SinglePhoto;
 
 /***/ },
-/* 300 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports.BaseImage = __webpack_require__(301);
-	module.exports.Image = __webpack_require__(303);
+	module.exports.BaseImage = __webpack_require__(304);
+	module.exports.Image = __webpack_require__(306);
 	//module.exports.Picture= require('./components/Picture');
 
 /***/ },
-/* 301 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31689,7 +32083,7 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var React = __webpack_require__(1);
-	var Utils = __webpack_require__(302);
+	var Utils = __webpack_require__(305);
 	
 	/** Equivalent to html <img> element
 	  *
@@ -31862,7 +32256,7 @@
 	});
 
 /***/ },
-/* 302 */
+/* 305 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31886,13 +32280,13 @@
 	};
 
 /***/ },
-/* 303 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var BaseImage = __webpack_require__(301);
+	var BaseImage = __webpack_require__(304);
 	
 	/** Equivalent to html <img> element
 	  *
@@ -31930,237 +32324,6 @@
 	        return React.createElement(BaseImage, this.props);
 	    }
 	});
-
-/***/ },
-/* 304 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _post = __webpack_require__(305);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var SinglePost = function SinglePost(props) {
-	
-	    var post = props.singlePost;
-	
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Post'
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'col-lg-2',
-	                    key: post.postId },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'post' },
-	                    _react2.default.createElement(
-	                        'h2',
-	                        null,
-	                        post.title
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        post.content
-	                    )
-	                )
-	            )
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                'button',
-	                { type: 'delete', onClick: (0, _post.deletePost)(post.postId),
-	                    className: 'btn btn-primary' },
-	                'Delete Post'
-	            )
-	        )
-	    );
-	};
-	
-	exports.default = SinglePost;
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.createNewPost = exports.newPost = exports.getAllPosts = exports.allPosts = exports.deletePost = exports.getSinglePost = exports.singlePost = undefined;
-	
-	var _constants = __webpack_require__(257);
-	
-	var _axios = __webpack_require__(261);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _reactRouter = __webpack_require__(178);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var singlePost = exports.singlePost = function singlePost(post) {
-		return {
-			type: _constants.GET_SINGLE_POST,
-			post: post
-		};
-	};
-	
-	var getSinglePost = exports.getSinglePost = function getSinglePost(postId) {
-		return function (dispatch) {
-			_axios2.default.get('/api/posts/' + postId).then(function (res) {
-				dispatch(singlePost(res.data));
-			});
-		};
-	};
-	
-	var deletePost = exports.deletePost = function deletePost(postId) {
-		return function (dispatch) {
-			_axios2.default.delete('/api/posts/' + postId).then(function (res) {
-				console.log('res: ', res);
-			});
-		};
-	};
-	
-	var allPosts = exports.allPosts = function allPosts(posts) {
-		return {
-			type: _constants.GET_ALL_POSTS,
-			posts: posts
-		};
-	};
-	
-	var getAllPosts = exports.getAllPosts = function getAllPosts() {
-		return function (dispatch) {
-			_axios2.default.get('/api/posts').then(function (res) {
-				dispatch(allPosts(res.data));
-			});
-		};
-	};
-	
-	var newPost = exports.newPost = function newPost(postTitle, postContent) {
-		return {
-			type: _constants.CREATE_POST,
-			postTitle: postTitle, postContent: postContent
-		};
-	};
-	
-	var createNewPost = exports.createNewPost = function createNewPost(postTitle, postContent) {
-	
-		return function (dispatch, getState) {
-			return _axios2.default.post('/api/posts', { title: postTitle, content: postContent }).then(function (res) {
-				return res.data;
-			}).then(function (newPost) {
-				var allExistingPosts = getState().posts.allPosts.concat([newPost]);
-				dispatch(getAllPosts(allExistingPosts));
-	
-				_reactRouter.hashHistory.push('/posts/' + newPost.postId);
-			});
-		};
-	};
-
-/***/ },
-/* 306 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(178);
-	
-	var _photo = __webpack_require__(313);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Img = __webpack_require__(300).Image;
-	
-	var SinglePhoto = function SinglePhoto(props) {
-	
-	    var photo = props.singlePhoto;
-	    var tags = props.photoTags;
-	
-	    function separateTags(arr, splitter) {
-	        if (arr.length === 0) {
-	            return [];
-	        }
-	
-	        return arr.slice(0).join(splitter);
-	    }
-	
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Photo by ',
-	            photo.userName
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'col-lg-2', key: photo.photoId },
-	                _react2.default.createElement(Img, { alt: 'photo', srcSet: photo.imgUrl }),
-	                _react2.default.createElement(
-	                    'small',
-	                    { className: 'caption' },
-	                    photo.caption
-	                ),
-	                _react2.default.createElement('br', null)
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	                'p',
-	                null,
-	                'tags:',
-	                tags && separateTags(tags, ', ')
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	                'small',
-	                null,
-	                'posted at ',
-	                photo.createdAt
-	            )
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement('button', { type: 'add', onClick: (0, _photo.addPhotoToList)(post.postId) })
-	        )
-	    );
-	};
-	
-	exports.default = SinglePhoto;
 
 /***/ },
 /* 307 */
@@ -32405,7 +32568,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Img = __webpack_require__(300).Image;
+	var Img = __webpack_require__(303).Image;
 	
 	var Photos = function Photos(props) {
 	  var photos = props.allPhotos;
@@ -32642,7 +32805,7 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _post = __webpack_require__(305);
+	var _post = __webpack_require__(301);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -32663,6 +32826,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, (NewPostForm.__proto__ || Object.getPrototypeOf(NewPostForm)).call(this, props));
 	
+	    console.log(props);
 	    _this.state = {
 	      postTitle: '',
 	      postContent: '',
@@ -32990,7 +33154,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.addPhotoToList = exports.postNewPhoto = exports.newPhoto = exports.getAllPhotos = exports.allPhotos = exports.getSinglePhoto = exports.singlePhoto = undefined;
+	exports.postNewPhoto = exports.newPhoto = exports.getAllPhotos = exports.allPhotos = exports.getSinglePhoto = exports.singlePhoto = undefined;
 	
 	var _constants = __webpack_require__(257);
 	
@@ -33051,24 +33215,94 @@
 			});
 		};
 	};
-	
-	var addPhotoToList = exports.addPhotoToList = function addPhotoToList(listId, photoId) {
-		return function (dispatch, getState) {
-			return _axios2.default.post('/api/lists/' + listId + '/photos', { listId: listId, photoId: photoId }).then(function (res) {
-				return res.data;
-			}).then(function (photo) {
-				//get the state
-				var targetList = getState().lists.singleList;
-				var listPhotos = singleList.photos;
-	
-				var addedPhoto = photos.concat(photo);
-				var newList = Object.assign({}, targetList, { listPhotos: addedPhotos });
-			});
-		};
-	};
 
 /***/ },
 /* 314 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Lists = __webpack_require__(307);
+	
+	var _Lists2 = _interopRequireDefault(_Lists);
+	
+	var _Photos = __webpack_require__(309);
+	
+	var _Photos2 = _interopRequireDefault(_Photos);
+	
+	var _SinglePhoto = __webpack_require__(302);
+	
+	var _SinglePhoto2 = _interopRequireDefault(_SinglePhoto);
+	
+	var _photo = __webpack_require__(313);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var AddPhoto = function AddPhoto(props) {
+	
+	  var listPhotos = props.listPhotos;
+	  var handleChange = props.handleChange;
+	  var handleSubmit = props.handleSubmit;
+	
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row' },
+	    _react2.default.createElement(
+	      'h2',
+	      null,
+	      'Add Photo'
+	    ),
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      'form',
+	      { className: 'form-row', onSubmit: handleSubmit },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'form-group' },
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          'Upload Photo'
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', {
+	          onChange: handleChange,
+	          type: 'url',
+	          placeholder: 'Add Photo Link here'
+	          // pattern="file:///.+" //type="file" or ="url" 
+	          // required 
+	        })
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'form-group' },
+	        _react2.default.createElement(
+	          'button',
+	          { type: 'submit' },
+	          'Save Photo '
+	        )
+	      )
+	    )
+	  );
+	
+	  //select a list
+	  //add photo
+	  //<div> <button type="add" onClick={addPhotoToList(post.postId)}></button>  </div>
+	
+	};
+	
+	exports.default = AddPhoto;
+
+/***/ },
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33091,11 +33325,11 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _post = __webpack_require__(305);
+	var _post = __webpack_require__(301);
 	
 	var _photo = __webpack_require__(313);
 	
-	var _list = __webpack_require__(315);
+	var _list = __webpack_require__(316);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33130,7 +33364,7 @@
 	exports.default = MainContainer;
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33138,7 +33372,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.createNewList = exports.newList = exports.getAllLists = exports.allLists = exports.allPhotosInList = exports.getSingleList = exports.singleList = undefined;
+	exports.addPhotoToList = exports.createNewList = exports.newList = exports.getAllLists = exports.allLists = exports.allPhotosInList = exports.getSingleList = exports.singleList = undefined;
 	
 	var _constants = __webpack_require__(257);
 	
@@ -33207,9 +33441,25 @@
 			});
 		};
 	};
+	
+	var addPhotoToList = exports.addPhotoToList = function addPhotoToList(listId, imgUrl) {
+		return function (dispatch, getState) {
+			return _axios2.default.put('/api/lists/' + listId, { listId: listId, imgUrl: imgUrl }).then(function (res) {
+				res.data;
+			}).then(function (photo) {
+				console.log('photo: ', photo);
+				//get the state
+				var targetList = getState().lists.singleList;
+				var listPhotos = singleList.photos;
+	
+				var addedPhoto = photos.concat(photo);
+				var newList = Object.assign({}, targetList, { listPhotos: addedPhotos });
+			});
+		};
+	};
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33232,7 +33482,7 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _user = __webpack_require__(317);
+	var _user = __webpack_require__(318);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33272,7 +33522,7 @@
 	exports.default = UserContainer;
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33388,7 +33638,7 @@
 	};
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33417,7 +33667,7 @@
 	
 	var _LoginForm2 = _interopRequireDefault(_LoginForm);
 	
-	var _user = __webpack_require__(317);
+	var _user = __webpack_require__(318);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33518,7 +33768,7 @@
 	exports.default = LoginFormContiner;
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33539,7 +33789,7 @@
 	
 	var _SingleList2 = _interopRequireDefault(_SingleList);
 	
-	var _list = __webpack_require__(315);
+	var _list = __webpack_require__(316);
 	
 	var _reactRedux = __webpack_require__(286);
 	
@@ -33549,6 +33799,7 @@
 	function mapStateToProps(state) {
 	    return {
 	        listName: state.lists.name,
+	        listId: state.lists.listId,
 	        listPhotos: state.lists.listPhotos,
 	        listTags: state.lists.tags
 	    };
@@ -33672,55 +33923,6 @@
 	// export default SingleListContainer;
 
 /***/ },
-/* 320 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _SinglePost = __webpack_require__(304);
-	
-	var _SinglePost2 = _interopRequireDefault(_SinglePost);
-	
-	var _store = __webpack_require__(233);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _reactRedux = __webpack_require__(286);
-	
-	var _post = __webpack_require__(305);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	//get action creators 
-	
-	//map dispatch to props
-	function mapStateToProps(state) {
-	    return {
-	        singlePost: state.posts
-	    };
-	}
-	
-	//map dispatch to props
-	function mapDispatchToProps(dispatch) {
-	    return {
-	        getSinglePost: function getSinglePost(post) {
-	            dispatch((0, _post.getSinglePost)(post));
-	        }
-	    };
-	}
-	
-	var SinglePostContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SinglePost2.default);
-	exports.default = SinglePostContainer;
-
-/***/ },
 /* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33734,7 +33936,60 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SinglePhoto = __webpack_require__(306);
+	var _SinglePost = __webpack_require__(300);
+	
+	var _SinglePost2 = _interopRequireDefault(_SinglePost);
+	
+	var _store = __webpack_require__(233);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _reactRedux = __webpack_require__(286);
+	
+	var _post = __webpack_require__(301);
+	
+	var _reactRouter = __webpack_require__(178);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	//map dispatch to props
+	function mapStateToProps(state) {
+	    return {
+	        singlePost: state.posts
+	    };
+	}
+	
+	//map dispatch to props
+	//get action creators 
+	function mapDispatchToProps(dispatch) {
+	    return {
+	        getSinglePost: function getSinglePost(post) {
+	            dispatch((0, _post.getSinglePost)(post));
+	        }
+	    };
+	}
+	
+	//add component change on post delete
+	// browserHistory.push('/posts')
+	
+	var SinglePostContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SinglePost2.default);
+	exports.default = SinglePostContainer;
+
+/***/ },
+/* 322 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SinglePhoto = __webpack_require__(302);
 	
 	var _SinglePhoto2 = _interopRequireDefault(_SinglePhoto);
 	
@@ -33748,7 +34003,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Img = __webpack_require__(300).Image;
+	var Img = __webpack_require__(303).Image;
 	
 	//map dispatch to props
 	function mapStateToProps(state) {
@@ -33797,7 +34052,7 @@
 	// }
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33933,7 +34188,7 @@
 	exports.default = SearchFormContainer;
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33956,7 +34211,7 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _list = __webpack_require__(315);
+	var _list = __webpack_require__(316);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33980,7 +34235,7 @@
 	exports.default = ListsContainer;
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34003,7 +34258,7 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _post = __webpack_require__(305);
+	var _post = __webpack_require__(301);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -34068,7 +34323,7 @@
 	// }
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34139,7 +34394,7 @@
 	// }
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34164,7 +34419,7 @@
 	
 	var _NewList2 = _interopRequireDefault(_NewList);
 	
-	var _list = __webpack_require__(315);
+	var _list = __webpack_require__(316);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -34277,7 +34532,7 @@
 	exports.default = NewListContiner;
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34302,7 +34557,9 @@
 	
 	var _NewPost2 = _interopRequireDefault(_NewPost);
 	
-	var _post = __webpack_require__(305);
+	var _post = __webpack_require__(301);
+	
+	var _reactRouter = __webpack_require__(178);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -34318,6 +34575,8 @@
 	    function NewPostContainer(props) {
 	        _classCallCheck(this, NewPostContainer);
 	
+	        console.log('props: ', props);
+	
 	        var _this = _possibleConstructorReturn(this, (NewPostContainer.__proto__ || Object.getPrototypeOf(NewPostContainer)).call(this, props));
 	
 	        _this.state = {
@@ -34330,6 +34589,10 @@
 	        _this.handleSubmit = _this.handleSubmit.bind(_this);
 	        return _this;
 	    }
+	
+	    // redirect(){
+	    //     browserHistory.push('/posts')
+	    // }
 	
 	    _createClass(NewPostContainer, [{
 	        key: 'handleChange',
@@ -34354,6 +34617,8 @@
 	                postTitle: '',
 	                postContent: '',
 	                dirty: false });
+	
+	            // browserHistory.push('/posts')
 	        }
 	    }, {
 	        key: 'render',
@@ -34489,7 +34754,7 @@
 	// export default NewPostContainer;
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

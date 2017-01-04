@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import store from '../store.js';
 import {createNewPost} from '../action-creators/post'
+
 //TO DO: change size in comment input
 class NewPostForm extends Component {
 
   constructor(props){
         super(props);
 
+        console.log(props)
         this.state = {
             postTitle: '',
             postContent: '',

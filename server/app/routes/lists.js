@@ -95,9 +95,13 @@ router.post('/', function(req, res, next){
 })
 
 router.put('/:listId', function(req, res, next){
+
+	let newImg = req.body.imgUrl;
+	let listID = req.body.listId;
+
 	List.findOne({
 		where: {
-			listId: req.params.listId
+			listId: listID
 		}
 	})
 	.then(list => {
@@ -105,16 +109,18 @@ router.put('/:listId', function(req, res, next){
 			res.sendStatus(404).end()
 		}
 
+		let photosArray = list.dataValues.listPhotos;
+		photosArray.push(newImg);
+
+		console.log(photosArray)
 		let updatedList = {
 			listId: list.dataValues.listId,
-			listPhotos: list.dataValues.listPhotos
+			listPhotos: photosArray
 		}
-
-		//add photos to list after upload
-		//push photo onto array
 
 		list.update(updatedList)
 		.then( returnList => {
+			console.log('returnList: ', returnList)
 			res.json(returnList)
 		})
 	})

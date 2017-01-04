@@ -12,24 +12,28 @@ const AddPhoto = (props) => {
   const handleSubmit = props.handleSubmit;
 
   return (
-  	<form className='form-row' onSubmit={handleSubmit}>
-      <h2>Upload Photo</h2>
-    	{/*add warninghere*/}
-      <div className='form-group'>
-        <label>Name</label>
-        <input
-          value={input}
-          onChange={handleChange}
-          type="url" 
-          placeholder="Add Photo Here"
-          pattern="file:///.+" //type="file" or ="url" 
-          required /> 
-      </div>
-      <div className='form-group'>
-        <button type="submit">
-        Save Photo </button>
-      </div>
-    </form>
+  	<div className="row">
+      <h2>Add Photo</h2>
+      <br/>
+      <form className='form-row' onSubmit={handleSubmit}>
+      	{/*add warninghere*/}
+        <div className='form-group'>
+          <label>Upload Photo</label>
+          <br/>
+          <input
+            onChange={handleChange}
+            type="url" 
+            placeholder="Add Photo Link here"
+            // pattern="file:///.+" //type="file" or ="url" 
+            // required 
+            /> 
+        </div>
+        <div className='form-group'>
+          <button type="submit">
+          Save Photo </button>
+        </div>
+      </form>
+    </div>
 
   )
 

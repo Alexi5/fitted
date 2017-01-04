@@ -47,6 +47,35 @@ const list = {
 
 const config = {
 	instanceMethods: {
+		// convertListPhotos: function(){
+		// 	return List.findOne({
+		// 		where: {
+		// 			listId: req.params.listId
+		// 		}
+		// 	})
+		// 	.then( foundList => {
+		// 		let newListPhotos = foundList.dataValues.listPhotos;
+		// 		let finalList = [];
+
+		// 		this.listPhotos.map( photoInList => {
+		// 			Photo.findOne({
+		// 				where: {
+		// 					photoId: photoInList
+		// 				}
+		// 			})
+		// 			.then( photo => {
+		// 				photoInList = photo.dataValues.imgUrl
+		// 				finalList.push(photoInList);
+		// 			})
+		// 		})
+
+		// 		foundList.update({
+		// 			listPhotos: finalList
+		// 		})
+
+		// 		return foundList
+		// 	})
+		// },
 		addPhotoToList: function(photo){
 			return Photo.findOne({
 				where: {
@@ -87,7 +116,8 @@ const config = {
 	  				listArray[listPhoto] = photo.dataValues.imgUrl
 	  			})	
 	  		})
-		},
+		}
+		
 	},
 	classMethods: {
 		findByTag: function(tag){
@@ -101,7 +131,7 @@ const config = {
 					// }
 				}
 			})
-		}
+		},
 	}
 }
 
