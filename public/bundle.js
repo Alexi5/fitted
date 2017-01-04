@@ -31952,7 +31952,6 @@
 	var SinglePost = function SinglePost(props) {
 	
 	  var post = props.singlePost;
-	  console.log('post', post);
 	
 	  return _react2.default.createElement(
 	    'div',
@@ -31991,7 +31990,7 @@
 	      null,
 	      _react2.default.createElement(
 	        'form',
-	        { onSubmit: props.deletePost(post.postId) },
+	        { onClick: props.deletePost(post.postId) },
 	        _react2.default.createElement(
 	          'button',
 	          { type: 'delete', className: 'btn btn-primary' },
@@ -32003,6 +32002,50 @@
 	};
 	
 	exports.default = SinglePost;
+	
+	// import React, {Component} from 'react';
+	// import {deletePost} from '../action-creators/post'
+	
+	// class SinglePost extends Component {
+	
+	//   constructor(props){
+	//     super(props);
+	//   }
+	
+	//   deleteHandler(e){
+	//       e.preventDefault();
+	//       this.props.deletePost(this.props.post.postId);
+	//   }
+	
+	//   render(){
+	//     let post = this.props.singlePost
+	
+	//     return (
+	//         <div>
+	//             <h3>Post</h3>
+	//             <div className='row'> 
+	//             {    
+	//                 <div className='col-lg-2' 
+	//                      key={post.postId}>
+	//                     <div className='post'>
+	//                        <h2>{post.title}</h2>
+	//                        <p>{post.content}</p>
+	//                     </div>
+	//                </div>              
+	//             }
+	//             </div>
+	//             <div>
+	//                 <button 
+	//                   type="delete" 
+	//                   className="btn btn-primary"
+	//                   onClick={this.deleteHandler.bind(this)}>Delete Post</button>
+	//             </div>
+	//         </div>
+	//       )
+	//   }
+	// };
+	
+	// export default SinglePost;
 
 /***/ },
 /* 305 */
@@ -33720,6 +33763,72 @@
 	
 	var SinglePostContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SinglePost2.default);
 	exports.default = SinglePostContainer;
+	
+	// import React, {Component} from 'react';
+	// import SinglePost from '../components/SinglePost';
+	// import store from '../store.js';
+	// import {connect} from 'react-redux'
+	// import {getSinglePost, deletePost} from '../action-creators/post'; //get action creators 
+	
+	// //map dispatch to props
+	// function mapStateToProps(state){
+	//     console.log('state: ', state)
+	//     return {
+	//         singlePost: state.posts.singlePost
+	//     }
+	// }
+	
+	// //map dispatch to props
+	// function mapDispatchToProps(dispatch){
+	//     return {
+	//         deletePost: function(post){
+	//             dispatch(deletePost(post));
+	//         },
+	//         getSinglePost: function(post){
+	//             dispatch(getSinglePost(post));
+	//         }
+	//     }
+	// }
+	
+	// class SinglePostContainer extends Component {
+	
+	//     constructor(props){
+	//         super(props)
+	//         this.state = {
+	//             post: props.singlePost
+	//         }
+	//     }
+	
+	//     deleteSinglePost(postId) {
+	//         deletePost(postId)
+	//         .then((res) => {
+	
+	//             let allPosts = this.state.post.filter((post) => {
+	//                 return postId !== post.postId;
+	//             });
+	
+	//             this.setState(state => {
+	//                 state.allPosts = allPosts;
+	//                 return state;
+	//             });
+	//         })
+	//         .catch((err) => {
+	//             console.error('err', err);
+	//         });
+	//     }
+	
+	//     render(){
+	//         return(
+	//             <SinglePost
+	//                 post={this.state.post}
+	//                 deletePost={this.deleteSinglePost.bind(this)}/>
+	//         )
+	//     }
+	
+	// }
+	
+	// SinglePostContainer = connect(mapStateToProps, mapDispatchToProps)(SinglePostContainer)
+	// export default SinglePostContainer;
 
 /***/ },
 /* 321 */
