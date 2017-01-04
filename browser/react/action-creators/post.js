@@ -24,7 +24,8 @@ export const deletePost = (postId) => {
 	return dispatch => {
 		axios.delete(`/api/posts/${postId}`)
 		.then( res => {
-			dispatch(singlePost(res.data))
+			console.log('res: ', res)
+			
 		})
 	}
 }

@@ -31959,8 +31959,7 @@
 	        _react2.default.createElement(
 	            'h3',
 	            null,
-	            'Post by ',
-	            post.userName
+	            'Post'
 	        ),
 	        _react2.default.createElement(
 	            'div',
@@ -32083,7 +32082,7 @@
 	var deletePost = exports.deletePost = function deletePost(postId) {
 		return function (dispatch) {
 			_axios2.default.delete('/api/posts/' + postId).then(function (res) {
-				dispatch(singlePost(res.data));
+				console.log('res: ', res);
 			});
 		};
 	};

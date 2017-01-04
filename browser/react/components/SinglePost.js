@@ -7,7 +7,8 @@ const SinglePost = (props) => {
 
 return (
     <div>
-        <h3>Post by {post.userName}</h3>
+        <h3>Post</h3>
+        {/*add warning for deletion*/}
         <div className='row'> 
         {    
             <div className='col-lg-2' 

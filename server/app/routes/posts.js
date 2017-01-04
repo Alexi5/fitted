@@ -74,10 +74,21 @@ router.post('/', function(req, res, next){
 })
 
 router.delete('/:postId', function(req, res, next){
-	Post.delete({
-		postId: req.params.postId
+	return Post.findOne({
+		where: {
+			postId: req.params.postId
+		}
 	})
-	.then( () => {
+	.then( post => {
+		console.log(post)
+		if(!post){
+			res.status(404).end()
+		}
+		post.destroy({
+			where: {
+				postId: post.dataValues.postId
+			}
+		})
 		res.send('post deleted')
 	})
 })
