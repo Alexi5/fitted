@@ -1,10 +1,8 @@
-// import initialState from '../initialState.js'
 import React from 'react';
 import Lists from '../components/Lists';
 import store from '../store.js';
 import {connect} from 'react-redux'
-import {getAllLists} from '../action-creators/list'; //get action creators 
-
+import {getAllLists} from '../action-creators/list'; 
 
 //map dispatch to props
 function mapStateToProps(state){

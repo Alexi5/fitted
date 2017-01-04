@@ -86,97 +86,101 @@
 	
 	var _Search2 = _interopRequireDefault(_Search);
 	
-	var _SingleList = __webpack_require__(298);
+	var _SingleList = __webpack_require__(299);
 	
 	var _SingleList2 = _interopRequireDefault(_SingleList);
 	
-	var _SinglePost = __webpack_require__(303);
+	var _SinglePost = __webpack_require__(304);
 	
 	var _SinglePost2 = _interopRequireDefault(_SinglePost);
 	
-	var _SinglePhoto = __webpack_require__(305);
+	var _SinglePhoto = __webpack_require__(306);
 	
 	var _SinglePhoto2 = _interopRequireDefault(_SinglePhoto);
 	
-	var _Lists = __webpack_require__(306);
+	var _Lists = __webpack_require__(307);
 	
 	var _Lists2 = _interopRequireDefault(_Lists);
 	
-	var _Posts = __webpack_require__(307);
+	var _Posts = __webpack_require__(308);
 	
 	var _Posts2 = _interopRequireDefault(_Posts);
 	
-	var _Photos = __webpack_require__(308);
+	var _Photos = __webpack_require__(309);
 	
 	var _Photos2 = _interopRequireDefault(_Photos);
 	
-	var _NewList = __webpack_require__(309);
+	var _NewList = __webpack_require__(310);
 	
 	var _NewList2 = _interopRequireDefault(_NewList);
 	
-	var _NewPost = __webpack_require__(310);
+	var _NewPost = __webpack_require__(311);
 	
 	var _NewPost2 = _interopRequireDefault(_NewPost);
 	
-	var _NewPhoto = __webpack_require__(311);
+	var _NewPhoto = __webpack_require__(312);
 	
 	var _NewPhoto2 = _interopRequireDefault(_NewPhoto);
 	
-	var _MainContainer = __webpack_require__(313);
+	var _MainContainer = __webpack_require__(314);
 	
 	var _MainContainer2 = _interopRequireDefault(_MainContainer);
 	
-	var _UserContainer = __webpack_require__(315);
+	var _UserContainer = __webpack_require__(316);
 	
 	var _UserContainer2 = _interopRequireDefault(_UserContainer);
 	
-	var _LoginFormContainer = __webpack_require__(317);
+	var _LoginFormContainer = __webpack_require__(318);
 	
 	var _LoginFormContainer2 = _interopRequireDefault(_LoginFormContainer);
 	
-	var _SingleListContainer = __webpack_require__(318);
+	var _SingleListContainer = __webpack_require__(319);
 	
 	var _SingleListContainer2 = _interopRequireDefault(_SingleListContainer);
 	
-	var _SinglePostContainer = __webpack_require__(319);
+	var _SinglePostContainer = __webpack_require__(320);
 	
 	var _SinglePostContainer2 = _interopRequireDefault(_SinglePostContainer);
 	
-	var _SinglePhotoContainer = __webpack_require__(320);
+	var _SinglePhotoContainer = __webpack_require__(321);
 	
 	var _SinglePhotoContainer2 = _interopRequireDefault(_SinglePhotoContainer);
 	
-	var _ListsContainer = __webpack_require__(321);
+	var _SearchContainer = __webpack_require__(322);
+	
+	var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
+	
+	var _ListsContainer = __webpack_require__(323);
 	
 	var _ListsContainer2 = _interopRequireDefault(_ListsContainer);
 	
-	var _PostsContainer = __webpack_require__(322);
+	var _PostsContainer = __webpack_require__(324);
 	
 	var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
 	
-	var _PhotosContainer = __webpack_require__(323);
+	var _PhotosContainer = __webpack_require__(325);
 	
 	var _PhotosContainer2 = _interopRequireDefault(_PhotosContainer);
 	
-	var _NewListContainer = __webpack_require__(324);
+	var _NewListContainer = __webpack_require__(326);
 	
 	var _NewListContainer2 = _interopRequireDefault(_NewListContainer);
 	
-	var _NewPostContainer = __webpack_require__(325);
+	var _NewPostContainer = __webpack_require__(327);
 	
 	var _NewPostContainer2 = _interopRequireDefault(_NewPostContainer);
 	
-	var _NewPhotoContainer = __webpack_require__(326);
+	var _NewPhotoContainer = __webpack_require__(328);
 	
 	var _NewPhotoContainer2 = _interopRequireDefault(_NewPhotoContainer);
 	
-	var _user = __webpack_require__(316);
+	var _user = __webpack_require__(317);
 	
-	var _list = __webpack_require__(314);
+	var _list = __webpack_require__(315);
 	
-	var _post = __webpack_require__(304);
+	var _post = __webpack_require__(305);
 	
-	var _photo = __webpack_require__(312);
+	var _photo = __webpack_require__(313);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -187,15 +191,10 @@
 	//import action creators
 	
 	
-	//import containers
-	// import UserContainer from './containers/UserContainer';
+	//creating new
 	
 	
-	//multiple (list of) posts
-	
-	
-	//import components ======
-	//single user page
+	//sigle list and single page
 	var onMainEnter = function onMainEnter() {
 		Promise.all([
 		// axios.get('/api/home'),
@@ -208,10 +207,15 @@
 		});
 	};
 	
-	//creating new
+	//import containers
+	// import UserContainer from './containers/UserContainer';
 	
 	
-	//sigle list and single page
+	//multiple (list of) posts
+	
+	
+	//import components ======
+	//single user page
 	
 	
 	var onListsEnter = function onListsEnter() {
@@ -234,6 +238,7 @@
 		_store2.default.dispatch((0, _photo.getAllPhotos)());
 	};
 	var onPhotoEnter = function onPhotoEnter(nextRouterState) {
+		console.log('next router: ', nextRouterState);
 		var photoId = nextRouterState.params.photoId;
 		_store2.default.dispatch((0, _photo.getSinglePhoto)(photoId));
 	};
@@ -279,7 +284,8 @@
 			{ history: _reactRouter.browserHistory },
 			_react2.default.createElement(_reactRouter.Route, { path: '/',
 				component: _MainContainer2.default,
-				onEnter: onMainEnter }),
+				onEnter: onMainEnter
+			}),
 			_react2.default.createElement(_reactRouter.Route, { path: '/login',
 				component: _LoginFormContainer2.default
 				// onLeave={onLoginLeave}
@@ -28577,6 +28583,8 @@
 	var GET_SINGLE_PHOTO = exports.GET_SINGLE_PHOTO = 'GET_SINGLE_PHOTO';
 	var GET_SINGLE_LIST = exports.GET_SINGLE_LIST = 'GET_SINGLE_LIST';
 	var GET_SINGLE_POST = exports.GET_SINGLE_POST = 'GET_SINGLE_POST';
+	
+	var GET_TAGS = exports.GET_TAGS = 'GET_TAGS';
 
 /***/ },
 /* 258 */
@@ -31454,11 +31462,17 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(178);
+	var _tags = __webpack_require__(298);
+	
+	var _store = __webpack_require__(233);
+	
+	var _store2 = _interopRequireDefault(_store);
 	
 	var _axios = __webpack_require__(261);
 	
 	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reactRouter = __webpack_require__(178);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -31477,8 +31491,12 @@
 	    var _this = _possibleConstructorReturn(this, (SearchForm.__proto__ || Object.getPrototypeOf(SearchForm)).call(this, props));
 	
 	    _this.state = {
-	      tags: ''
+	      value: '',
+	      dirty: false
 	    };
+	
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
 	
@@ -31486,28 +31504,30 @@
 	    key: 'handleChange',
 	    value: function handleChange(event) {
 	      this.setState({
-	        tags: event.target.value
+	        value: event.target.value,
+	        dirty: true
 	      });
 	    }
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
-	      var _this2 = this;
-	
-	      //fix me
 	      event.preventDefault();
-	      _axios2.default.get('/api/search', {
-	        tags: this.state.tags
-	      }).then(function (res) {
 	
-	        var resTags = res.data;
-	        console.log('res: ', res.data);
-	        console.log('tags: ', _this2.state.tags);
+	      _store2.default.dispatch((0, _tags.searchTags)(this.state.value));
+	
+	      //reset the state
+	      this.setState({
+	        input: '',
+	        dirty: false
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var handleSubmit = this.handleSubmit.bind(this);
+	      var handleChange = this.handleChange.bind(this);
+	      var input = this.state.value;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
@@ -31516,7 +31536,7 @@
 	          { className: 'col-md-4 col-md-offset-4' },
 	          _react2.default.createElement(
 	            'form',
-	            { onSubmit: this.handleSubmit.bind(this) },
+	            { onSubmit: handleSubmit },
 	            _react2.default.createElement(
 	              'h1',
 	              null,
@@ -31526,8 +31546,8 @@
 	              'div',
 	              { className: 'form-group' },
 	              _react2.default.createElement('input', {
-	                onChange: this.handleChange.bind(this),
-	                value: this.state.tags,
+	                onChange: handleChange,
+	                value: input,
 	                className: 'form-control',
 	                placeholder: 'Enter Tags' })
 	            ),
@@ -31556,6 +31576,40 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.searchTags = exports.getTags = undefined;
+	
+	var _constants = __webpack_require__(257);
+	
+	var _axios = __webpack_require__(261);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var getTags = exports.getTags = function getTags(tags) {
+	  return {
+	    type: _constants.GET_TAGS,
+	    tags: tags
+	  };
+	};
+	
+	var searchTags = exports.searchTags = function searchTags(tags) {
+	  return function (dispatch) {
+	    _axios2.default.get('/api/search/' + tags).then(function (res) {
+	      dispatch(getTags(res.data.tags));
+	    });
+	  };
+	};
+
+/***/ },
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
 	var _react = __webpack_require__(1);
 	
@@ -31565,7 +31619,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Img = __webpack_require__(299).Image;
+	var Img = __webpack_require__(300).Image;
 	
 	var SingleList = function SingleList(props) {
 	
@@ -31617,17 +31671,17 @@
 	exports.default = SingleList;
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports.BaseImage = __webpack_require__(300);
-	module.exports.Image = __webpack_require__(302);
+	module.exports.BaseImage = __webpack_require__(301);
+	module.exports.Image = __webpack_require__(303);
 	//module.exports.Picture= require('./components/Picture');
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31635,7 +31689,7 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var React = __webpack_require__(1);
-	var Utils = __webpack_require__(301);
+	var Utils = __webpack_require__(302);
 	
 	/** Equivalent to html <img> element
 	  *
@@ -31808,7 +31862,7 @@
 	});
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31832,13 +31886,13 @@
 	};
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var BaseImage = __webpack_require__(300);
+	var BaseImage = __webpack_require__(301);
 	
 	/** Equivalent to html <img> element
 	  *
@@ -31878,7 +31932,7 @@
 	});
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31891,7 +31945,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _post = __webpack_require__(304);
+	var _post = __webpack_require__(305);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -31951,7 +32005,7 @@
 	exports.default = SinglePost;
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32031,7 +32085,7 @@
 	};
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32048,7 +32102,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Img = __webpack_require__(299).Image;
+	var Img = __webpack_require__(300).Image;
 	
 	var SinglePhoto = function SinglePhoto(props) {
 	
@@ -32107,7 +32161,7 @@
 	exports.default = SinglePhoto;
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32219,7 +32273,7 @@
 	exports.default = Lists;
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32257,14 +32311,14 @@
 	                'Posts'
 	            )
 	        ),
+	        empty && _react2.default.createElement(
+	            'div',
+	            { className: 'notice' },
+	            empty
+	        ),
 	        _react2.default.createElement(
 	            'div',
 	            { className: 'row' },
-	            empty && _react2.default.createElement(
-	                'div',
-	                { className: 'notice' },
-	                empty
-	            ),
 	            _react2.default.createElement(
 	                'ul',
 	                { className: 'posts' },
@@ -32332,7 +32386,7 @@
 	// })
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32349,7 +32403,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Img = __webpack_require__(299).Image;
+	var Img = __webpack_require__(300).Image;
 	
 	var Photos = function Photos(props) {
 	  var photos = props.allPhotos;
@@ -32416,7 +32470,7 @@
 	exports.default = Photos;
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32567,7 +32621,7 @@
 	exports.default = NewListForm;
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32586,7 +32640,7 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _post = __webpack_require__(304);
+	var _post = __webpack_require__(305);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -32759,7 +32813,7 @@
 	// export default PostForm;
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32778,7 +32832,7 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _photo = __webpack_require__(312);
+	var _photo = __webpack_require__(313);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -32926,7 +32980,7 @@
 	exports.default = NewPhotoForm;
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32991,13 +33045,13 @@
 				var allExistingPhotos = getState().photos.allPhotos.concat([newPhoto]);
 				dispatch(newPhoto(allUserPhotos));
 	
-				_reactRouter.hashHistory.push('/photos/${newPhoto.photoId}');
+				_reactRouter.hashHistory.push('/photos/' + newPhoto.photoId);
 			});
 		};
 	};
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33020,11 +33074,11 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _post = __webpack_require__(304);
+	var _post = __webpack_require__(305);
 	
-	var _photo = __webpack_require__(312);
+	var _photo = __webpack_require__(313);
 	
-	var _list = __webpack_require__(314);
+	var _list = __webpack_require__(315);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33059,7 +33113,7 @@
 	exports.default = MainContainer;
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33153,7 +33207,7 @@
 	};
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33176,7 +33230,7 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _user = __webpack_require__(316);
+	var _user = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33216,7 +33270,7 @@
 	exports.default = UserContainer;
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33256,7 +33310,7 @@
 		// }
 	
 		return function (dispatch) {
-			return _axios2.default.get('/api/users/' + userId + '/posts').then(function (res) {
+			return _axios2.default.get('/api/users/' + userId).then(function (res) {
 				dispatch(findUser(res.data));
 			});
 		};
@@ -33332,7 +33386,7 @@
 	};
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33361,7 +33415,7 @@
 	
 	var _LoginForm2 = _interopRequireDefault(_LoginForm);
 	
-	var _user = __webpack_require__(316);
+	var _user = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33462,7 +33516,7 @@
 	exports.default = LoginFormContiner;
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33479,11 +33533,11 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _SingleList = __webpack_require__(298);
+	var _SingleList = __webpack_require__(299);
 	
 	var _SingleList2 = _interopRequireDefault(_SingleList);
 	
-	var _list = __webpack_require__(314);
+	var _list = __webpack_require__(315);
 	
 	var _reactRedux = __webpack_require__(286);
 	
@@ -33616,7 +33670,7 @@
 	// export default SingleListContainer;
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33629,7 +33683,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SinglePost = __webpack_require__(303);
+	var _SinglePost = __webpack_require__(304);
 	
 	var _SinglePost2 = _interopRequireDefault(_SinglePost);
 	
@@ -33639,7 +33693,7 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _post = __webpack_require__(304);
+	var _post = __webpack_require__(305);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33668,7 +33722,7 @@
 	exports.default = SinglePostContainer;
 
 /***/ },
-/* 320 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33681,7 +33735,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SinglePhoto = __webpack_require__(305);
+	var _SinglePhoto = __webpack_require__(306);
 	
 	var _SinglePhoto2 = _interopRequireDefault(_SinglePhoto);
 	
@@ -33691,11 +33745,11 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _photo = __webpack_require__(312);
+	var _photo = __webpack_require__(313);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Img = __webpack_require__(299).Image;
+	var Img = __webpack_require__(300).Image;
 	
 	//map dispatch to props
 	function mapStateToProps(state) {
@@ -33744,7 +33798,143 @@
 	// }
 
 /***/ },
-/* 321 */
+/* 322 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(286);
+	
+	var _store = __webpack_require__(233);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _Search = __webpack_require__(297);
+	
+	var _Search2 = _interopRequireDefault(_Search);
+	
+	var _Lists = __webpack_require__(307);
+	
+	var _Lists2 = _interopRequireDefault(_Lists);
+	
+	var _Photos = __webpack_require__(309);
+	
+	var _Photos2 = _interopRequireDefault(_Photos);
+	
+	var _tags = __webpack_require__(298);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	function mapStateToProps(state) {
+	    console.log('state: ', state);
+	    return {
+	        lists: state.lists.tags,
+	        photos: state.lists.tag,
+	        tags: state.tags
+	    };
+	}
+	
+	function mapDipsatchToProps(dipatch) {
+	    return {};
+	}
+	
+	var SearchFormContainer = function (_React$Component) {
+	    _inherits(SearchFormContainer, _React$Component);
+	
+	    function SearchFormContainer(props) {
+	        _classCallCheck(this, SearchFormContainer);
+	
+	        var _this = _possibleConstructorReturn(this, (SearchFormContainer.__proto__ || Object.getPrototypeOf(SearchFormContainer)).call(this));
+	
+	        _this.state = {
+	            input: ''
+	        };
+	
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        return _this;
+	    }
+	
+	    //handle change
+	    //store the new value in the state
+	
+	
+	    _createClass(SearchFormContainer, [{
+	        key: 'handleChange',
+	        value: function handleChange(event) {
+	            this.setState({
+	                input: this.state.input
+	            });
+	        }
+	
+	        //handle submit
+	        //call dispatch to call the action with the new state value 
+	
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(event) {
+	            event.preventDefault();
+	            _store2.default.dispatch((0, _tags.searchTags)(this.state.input));
+	
+	            //reset the state
+	            this.setState({
+	                input: ''
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            //set the input and dirty val for use here
+	            var input = this.state.input;
+	            var photos = this.props.photos;
+	            var lists = this.props.lists;
+	            var warning = '';
+	
+	            //implement warning if for invalid entry
+	            //**************************************
+	            // let warning = '';
+	            // if(!name && dirty) {
+	            //     warning = 'please name you list';
+	            // }
+	
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_Search2.default, _extends({}, this.state, {
+	                    handleChange: this.handleChange,
+	                    handleSubmit: this.handleSubmit,
+	                    value: input,
+	                    warning: warning }))
+	            );
+	        }
+	    }]);
+	
+	    return SearchFormContainer;
+	}(_react2.default.Component);
+	
+	// SearchFormContainer = connect(mapStateToProps, mapDispatchToProps)(SearchFormContainer)
+	
+	exports.default = SearchFormContainer;
+
+/***/ },
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33757,7 +33947,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Lists = __webpack_require__(306);
+	var _Lists = __webpack_require__(307);
 	
 	var _Lists2 = _interopRequireDefault(_Lists);
 	
@@ -33767,12 +33957,9 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _list = __webpack_require__(314);
+	var _list = __webpack_require__(315);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	//get action creators 
-	
 	
 	//map dispatch to props
 	function mapStateToProps(state) {
@@ -33782,7 +33969,6 @@
 	}
 	
 	//map dispatch to props
-	// import initialState from '../initialState.js'
 	function mapDispatchToProps(dispatch) {
 	    return {
 	        getAllLists: function getAllLists() {
@@ -33795,7 +33981,7 @@
 	exports.default = ListsContainer;
 
 /***/ },
-/* 322 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33808,7 +33994,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Posts = __webpack_require__(307);
+	var _Posts = __webpack_require__(308);
 	
 	var _Posts2 = _interopRequireDefault(_Posts);
 	
@@ -33818,7 +34004,7 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _post = __webpack_require__(304);
+	var _post = __webpack_require__(305);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33883,7 +34069,7 @@
 	// }
 
 /***/ },
-/* 323 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33896,7 +34082,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Photos = __webpack_require__(308);
+	var _Photos = __webpack_require__(309);
 	
 	var _Photos2 = _interopRequireDefault(_Photos);
 	
@@ -33906,7 +34092,7 @@
 	
 	var _reactRedux = __webpack_require__(286);
 	
-	var _photo = __webpack_require__(312);
+	var _photo = __webpack_require__(313);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33954,7 +34140,7 @@
 	// }
 
 /***/ },
-/* 324 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33975,11 +34161,11 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _NewList = __webpack_require__(309);
+	var _NewList = __webpack_require__(310);
 	
 	var _NewList2 = _interopRequireDefault(_NewList);
 	
-	var _list = __webpack_require__(314);
+	var _list = __webpack_require__(315);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -34092,7 +34278,7 @@
 	exports.default = NewListContiner;
 
 /***/ },
-/* 325 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34113,11 +34299,11 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _NewPost = __webpack_require__(310);
+	var _NewPost = __webpack_require__(311);
 	
 	var _NewPost2 = _interopRequireDefault(_NewPost);
 	
-	var _post = __webpack_require__(304);
+	var _post = __webpack_require__(305);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -34304,7 +34490,7 @@
 	// export default NewPostContainer;
 
 /***/ },
-/* 326 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34323,11 +34509,11 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _NewPhoto = __webpack_require__(311);
+	var _NewPhoto = __webpack_require__(312);
 	
 	var _NewPhoto2 = _interopRequireDefault(_NewPhoto);
 	
-	var _photo = __webpack_require__(312);
+	var _photo = __webpack_require__(313);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	

@@ -15,8 +15,9 @@ const Posts = (props) => {
         <div className="header">
             <h3>Posts</h3>
         </div>
-        <div className='row'>
         { empty && <div className="notice">{empty}</div> }
+        
+        <div className='row'>
             <ul className='posts'>
             {  
                 posts && Object.values(posts).map((post, postId) => {

@@ -24,6 +24,7 @@ const Lists = (props) => {
             <h3>Lists</h3>
         </div>
         { empty && <div className="notice">{empty}</div> }
+        
         <div className='row'> 
             <ul className='lists'>
             {  

@@ -51,7 +51,7 @@ export const postNewPhoto = (photo) => {
 			const allExistingPhotos = getState().photos.allPhotos.concat([newPhoto]);
 			dispatch(newPhoto(allUserPhotos));
 			
-			hashHistory.push('/photos/${newPhoto.photoId}')
+			hashHistory.push(`/photos/${newPhoto.photoId}`)
 		})
 	}
 }

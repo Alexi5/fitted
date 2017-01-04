@@ -3,6 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../../models/user');
 const Session = require('../../models/session');
+const authenticate = require('../middleware/authenticate')
+
+router.use(authenticate)
 
 //Log in
 router.post('/login', (req, res, next) => {
@@ -23,12 +26,16 @@ router.post('/login', (req, res, next) => {
       throw err;
     } 
     
-    res.cookie('userId', foundUser.userId)
+    // res.cookie('userId', foundUser.userId)
     //res.redirect(`/users/:{foundUser.userId}`) //CHANGE BACK
+    req.session.userId = foundUser.userId
     res.json(foundUser)
   })
   .catch(next)
 })
+
+//Log out
+
 
 module.exports = router;
 

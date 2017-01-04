@@ -2,9 +2,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
-const expressSession = require('express-session')
+const session = require('express-session')
 const volleyball = require('volleyball');
 const path = require('path');
+const authenticate = require('./middleware/authenticate')
 
 //apply express to app
 const app = express();
@@ -14,18 +15,20 @@ app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
 //requrie the db and routes
 const db = require('../models/db');
+// const dbIndex= require('../models/index');
 
-//use middleware
+//middleware ==================
 app.use(bodyParser.json());
-app.use(cookieParser());
-
-app.use(expressSession({
-	secret: 'this is the secret',
-	cookie: {}
-}))
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(volleyball);
+app.use(cookieParser());
+
+app.use(session({
+	secret: 'this is the secret',
+	//cookie: {}
+}))
+
+app.use(authenticate)
 
 //serves up routes
 //need home page

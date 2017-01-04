@@ -25,7 +25,7 @@ export const getUserById = (userId) => {
 	// }
 
 	return dispatch => {
-		return axios.get(`/api/users/${userId}/posts`)
+		return axios.get(`/api/users/${userId}`)
 		.then(res => {
 			dispatch(findUser(res.data)) })
 	}

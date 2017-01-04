@@ -42,6 +42,7 @@ const config = {
 			        if(error){ return reject(error) }
           			else {
             			bcrypt.hash(this.password, salt, null, (error, hash) => {
+            				// console.log('hash: ', hash)
           					if(error){ return reject(error) }
           					this.password = hash;
           					resolve();
@@ -51,35 +52,6 @@ const config = {
       		})
 		}
 	},
-	// classMethods: {
-	// 	adminLogin: function(){
-	// 		if(User.name === 'Admin'){
-	// 			let post = Post.findAll()
-	// 			.then(posts => {
-	// 				posts.update({
-	// 					ownerId: User.userId
-	// 				})
-	// 			})
-	// 			let photo = Photo.findAll()
-	// 			.then(photos => {
-	// 				photos.update({
-	// 					ownerId: User.userId
-	// 				})
-	// 			})
-	// 			let list = List.findAll()
-	// 			.then(lists => {
-	// 				lists.update({
-	// 					ownerId: User.userId
-	// 				})
-	// 			})
-
-	// 			return Promise.all([post, photo, list])
-	// 			.then( results => {
-	// 				return results
-	// 			})
-	// 		}
-	// 	}
-	// },
 	hooks: {
 		beforeCreate: function(user){
 			return user.hashPassword(); 

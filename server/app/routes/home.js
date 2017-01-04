@@ -6,6 +6,7 @@ const Photo = require('../../models/photo');
 const Post = require('../../models/post');
 
 router.get('/', function(req, res, next){
+
 	let allLists = List.findAll()
 	.then( lists => {
 		return lists

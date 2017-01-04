@@ -22,3 +22,5 @@ export const GET_LIST_PHOTOS = 'GET_LIST_PHOTOS';
 export const GET_SINGLE_PHOTO = 'GET_SINGLE_PHOTO';
 export const GET_SINGLE_LIST = 'GET_SINGLE_LIST';	
 export const GET_SINGLE_POST = 'GET_SINGLE_POST'
+
+export const GET_TAGS = 'GET_TAGS';

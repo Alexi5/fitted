@@ -9,28 +9,21 @@ const Post = require('./post');
 const Session = require('./session');
 
 //set associations
-// User.hasMany(Post, {foreignKey: 'userId'})
+
+//many to many
+Photo.belongsToMany(List, {through: 'listId'})
+
+//one to many
+User.hasMany(List)
 User.hasMany(Post)
+User.hasMany(Photo)
+List.hasMany(Photo, {foreignKey: 'listPhotos'})
+
+//one to one
 Post.belongsTo(User, {as: 'userPost'})
 
-List.hasMany(Photo, {foreignKey: 'listPhotos'})
-Photo.belongsTo(List, {foreignKey: 'listId'})
-
-User.hasMany(List)
-User.hasMany(Photo)
-
-Session.hasOne(User)
-User.belongsTo(Session)
-
-// Post.belongsToMany(User, {through: adminId})
-// Photo.belongsToMany(User, {through: adminId})
-// List.belongsToMany(User, {through: adminId})
-
-
-// List.belongsTo(Post)
-// Photo.belongsTo(Post)
-// Post.hasOne(List)
-// Post.hasOne(Photo)
+Session.hasOne(User);
+User.belongsTo(Session);
 
 
 //export models

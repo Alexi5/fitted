@@ -19,13 +19,14 @@ router.post('/', (req, res, next) => {
       err.status = 401;
       throw err;
     } 
-    return Session.add(user.userId)
-  })
-  .then( sessionId => {
-  	console.log('user session id: ', sessionId)
-    res.cookie('sessionId', sessionId)
+    // return Session.add(user.userId)
+    req.session.userId = user.userId
     res.json(user)
   })
+  // .then( sessionId => {
+  //   console.log('user session id: ', sessionId)
+  //   res.cookie('sessionId', sessionId)
+  // })
   .catch(next)
   // var userData = {
   //   email: req.body.email
@@ -61,22 +62,22 @@ router.post('/', (req, res, next) => {
 
 })
 
-// router.get('/', function(req, res, next){
-// 	let user;
+router.get('/', function(req, res, next){
+	let user;
 
-// 	return User.findOne({
-// 			where: {
-// 				email: req.body.email
-// 			} 
-// 		})
-// 		.then( userData => {
-// 			if(!userData){
-// 				let err = new Error('Unauthorized')
-// 				err.status = 401;
-// 				throw err
-// 			}
-// 		})
-// })
+	return User.findOne({
+			where: {
+				email: req.body.email
+			} 
+		})
+		.then( userData => {
+			if(!userData){
+				let err = new Error('Unauthorized')
+				err.status = 401;
+				throw err
+			}
+		})
+})
 
 router.get('/:userId', function(req, res, next){
 	User.findOne({

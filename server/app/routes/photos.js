@@ -4,15 +4,16 @@ const User = require('../../models/user');
 const List = require('../../models/list')
 const Photo = require('../../models/photo');
 const Post = require('../../models/post');
+const auth = require('../middleware/authenticate')
+
+router.use(auth);
 
 router.get('/', function(req, res, next){
-	Photo.findAll(
-	{
+	Photo.findAll({
 		where: {
-			ownerId: req.cookies.userId
+			ownerId: req.session.userId
 		}
-	}
-	)
+	})
 	.then( photos => {
 		res.json(photos)
 	})

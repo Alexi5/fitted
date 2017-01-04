@@ -4,16 +4,17 @@ const User = require('../../models/user');
 const List = require('../../models/list')
 const Photo = require('../../models/photo');
 const Post = require('../../models/post');
+const auth = require('../middleware/authenticate')
 
+router.use(auth);
+
+//get all lists
 router.get('/', function(req, res, next){
-
-	List.findAll(
-	{
+	List.findAll({
 		where: {
-			ownerId: req.cookies.userId
+			ownerId: req.session.userId
 		}
-	}
-	)
+	})
 	.then( lists => {
 		res.json(lists)
 	})
@@ -32,7 +33,7 @@ router.get('/', function(req, res, next){
 // 	.catch(next)
 // })
 
-
+//get single list
 router.get('/:listId', function(req, res, next){
 	List.findOne({
 		where: {
@@ -66,37 +67,7 @@ router.get('/:listId', function(req, res, next){
 	.catch(next)
 })
 
-// router.get('/:listId/photos', function(req, res, next){
-// 	List.findOne({
-// 		where: {
-// 			listId: req.params.listId
-// 		}
-// 	})
-// 	.then( list => {
-// 		Photo.findAll({ 
-// 			where: { 
-// 				'listIds': list.dataValues.listId 
-// 			},
-// 			include: [ List ] 
-// 		})
-// 	})
-// 	.catch(next)
-// })
-
-
-router.get('/:userId', function(req, res, next){
-	List.findAll({
-		where: {
-			ownerId: req.params.userId
-		}
-	})
-	.then( lists => {
-		res.json(lists)
-	})
-	.catch(next)
-})
-
-
+//create new list
 router.post('/', function(req, res, next){
 	List.create({
 		name: req.body.name,
@@ -121,6 +92,32 @@ router.post('/', function(req, res, next){
 		res.json(newList)
 	})
 	.catch(next)
+})
+
+router.put('/:listId', function(req, res, next){
+	List.findOne({
+		where: {
+			listId: req.params.listId
+		}
+	})
+	.then(list => {
+		if(!list){
+			res.sendStatus(404).end()
+		}
+
+		let updatedList = {
+			listId: list.dataValues.listId,
+			listPhotos: list.dataValues.listPhotos
+		}
+
+		//add photos to list after upload
+		//push photo onto array
+
+		list.update(updatedList)
+		.then( returnList => {
+			res.json(returnList)
+		})
+	})
 })
 
 module.exports = router;

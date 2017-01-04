@@ -37,6 +37,8 @@ import SingleListContainer from './containers/SingleListContainer';
 import SinglePostContainer from './containers/SinglePostContainer';
 import SinglePhotoContainer from './containers/SinglePhotoContainer';
 
+import SearchContainer from './containers/SearchContainer';
+
 import ListsContainer from './containers/ListsContainer';
 import PostsContainer from './containers/PostsContainer';
 import PhotosContainer from './containers/PhotosContainer';
@@ -71,6 +73,7 @@ const onMainEnter = function(){
 	})
 }
 
+
 const onListsEnter = function () {
 	store.dispatch(getAllLists())
 };
@@ -78,6 +81,7 @@ const onListEnter = function (nextRouterState) {
   const listId = nextRouterState.params.listId;
   store.dispatch(getSingleList(listId));
 };
+
 
 const onPostsEnter = function () {
 	store.dispatch(getAllPosts())
@@ -87,13 +91,16 @@ const onPostEnter = function (nextRouterState) {
   store.dispatch(getSinglePost(postId));
 };
 
+
 const onPhotosEnter = function () {
 	store.dispatch(getAllPhotos())
 };
 const onPhotoEnter = function (nextRouterState) {
+  console.log('next router: ', nextRouterState)
   const photoId = nextRouterState.params.photoId;
   store.dispatch(getSinglePhoto(photoId));
 };
+
 
 const onUserEnter = function(nextRouterState){  
 	const userId = nextRouterState.params.userId;
@@ -134,7 +141,8 @@ ReactDOM.render(
 
 			<Route path='/' 
 				component={MainContainer} 
-				onEnter={onMainEnter} />
+				onEnter={onMainEnter} 
+				/>
 				
 			<Route path='/login' 
 				component={LoginFormContainer} 

@@ -49,9 +49,9 @@ const config = {
 	// },	
 	hooks: {
 		beforeValidate: function(){
-			this.imgUrl = (`file:///Users/alexjennings/Desktop
-				/fitted/public/photos/${this.photoId}.jpg`)
-			return this
+			// this.imgUrl = (`file:///Users/alexjennings/Desktop
+			// 	/fitted/public/photos/${this.photoId}.jpg`)
+			// return this
 		},
 		beforeCreate: {
 			//update size

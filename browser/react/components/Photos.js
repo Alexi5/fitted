@@ -16,6 +16,7 @@ const Photos = (props) => {
         <h3>Photos</h3>
       </div>
       { empty && <div className="notice">{empty}</div> }
+      
       <div className='row'> 
       { 
         photos && Object.values(photos).map((photo, photoId) => {
