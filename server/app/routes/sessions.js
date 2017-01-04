@@ -34,7 +34,7 @@ router.post('/login', (req, res, next) => {
   .catch(next)
 })
 
-//Log out
+//Log out  === fix me
 router.post('/login', (req, res, next) => {
   let user;
   

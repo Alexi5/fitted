@@ -4,7 +4,6 @@ const User = require('../../models/user');
 const Session = require('../../models/Session');
 
 router.use((req, res, next) => {
-	// console.log(req.session.userId)
 	User.findOne({
 		where: {
 			userId: req.session.userId
